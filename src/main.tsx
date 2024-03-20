@@ -8,7 +8,7 @@ import {
   createRoutesFromElements
 } from "react-router-dom"
 
-import { store } from './store/store.js'
+import { store } from './app/store.js'
 
 import PhrasesRemaining from './components/phrasesRemaining/phrasesRemaining.jsx'
 import PhrasesAll from './components/phrasesAll/PhrasesAll.jsx'
@@ -29,7 +29,7 @@ const router = createBrowserRouter( createRoutesFromElements(
   </Route>
 ))
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />

@@ -69,7 +69,7 @@ export default function Practice() {
     dispatch(setPhraseSessionStatus({id: currentPhrase.id, phraseSessionStatus: status}))
 
     if (status === 'correct' || status === 'wrong') {
-      dispatch(updatePhraseCount({id: currentPhrase.id, status: status}))
+      dispatch(updatePhraseCount({id: currentPhrase.id, practiceStatus: status}))
     }
     
     setPhraseProgress('new')

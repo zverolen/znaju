@@ -1,4 +1,15 @@
-export default function PhrasesAllRow({ data }) {
+interface PhrasesAllProps {
+  data: {
+    id: string;
+    created_at: string;
+    practiced_count: number;
+    correct_count: number;
+    russian: string;
+    serbian: string;
+  }
+}
+
+ const PhrasesAllRow = ({ data }: PhrasesAllProps) => {
   return (
     <tr key={data.id} role="row">
       <td role="cell">{data.russian}</td>
@@ -9,3 +20,5 @@ export default function PhrasesAllRow({ data }) {
     </tr>
   )
 }
+
+export default PhrasesAllRow
