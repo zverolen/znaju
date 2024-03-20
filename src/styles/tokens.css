@@ -1,0 +1,191 @@
+/* Colors are in hex format because no color manipulations are used at this point */
+
+:root {
+  /* primitive */
+
+  /* Colors */
+  --black: #212121;
+  --white: #fafafa;
+  --redDarkTheme: #f55fae;
+  --redLightTheme: #d42882;
+  --greenDarkTheme: #1bc498;
+  --greenLightTheme: #098268;
+  --greyLight: #ebebeb;
+  --greyMedium: #858585;
+  --greyDark: #333333;
+
+  /* Sizing */
+  --borderWidthPrimary: calc(1 / 16 * 1rem);
+  --borderWidthSecondary: calc(2 / 16 * 1rem);
+  --outlineOnFocus: calc(6 / 16 * 1rem);
+  --shadowOnFocus: calc(8 / 16 * 1rem);
+  --updatedCardCoverBorder: calc(4 / 16 * 1rem);
+  --innerOutlineOnFocus: calc(1 / 16 * 1rem);
+  --innerShadowOnFocus: calc(5 / 16 * 1rem);
+  --concealerShadowOffsetY: calc(5 / 16 * 1rem);
+  --concealerShadowSpread: calc(-2 / 16 * 1rem);
+
+  --fullWidth: 100%;
+  --fullHeight: 100%;
+  --half: 50%;
+  --halfReverse: -50%;
+  --optimalReadingWidth: 80ch;
+  --minDimentionWCAG-AAA: calc(44 / 16 * 1rem);
+
+  --siteWidthMin: calc(280 / 16 * 1rem);
+  --siteWidthMax: calc(1352 / 16 * 1rem);
+  --siteWidthIdeal: 94%;
+  
+  --titleSubheadingWidth: 71%;
+
+  --instructionTextGap: 0.5em;
+  /* --instructionTextGap: 0.3em; */
+
+  --concealerHeight: calc(5 / 16 * 1rem);
+
+  --marginCentering: auto;
+  --marginCorrection-I: calc(-1 / 16 * 1rem);
+
+  --textMin: calc(18 / 16 * 1rem);
+  --textMax: calc(20 / 16 * 1rem);
+  --textIdeal: 4vw;
+
+  --textCardMin: calc(18 / 16 * 1rem);
+  --textCardMax: calc(22 / 16 * 1rem);
+  --textCardIdeal: 7.2cqw;
+
+  --controlOnly: 1rem;
+
+  --titleMin: calc(24 / 16 * 1rem);
+  --titleMax: calc(44 / 16 * 1rem);
+  --titleIdeal: 7vw;
+
+  --titleSubheadingMin: var(--textMin);
+  --titleSubheadingMax: calc(24 / 16 * 1rem);
+  --titleSubheadingIdeal: 5vw;
+
+  --subheadingMin: var(--textMin);
+  --subheadingMax: calc(22 / 16 * 1rem);
+  --subheadingIdeal: var(--textIdeal);
+
+  --emojiMax: calc(24 / 16 * 1rem);
+  --widthTwoLetters: 2ch;
+
+  --lineHeightBig: 1.5;
+  /* --lineHeightBig: 1.3; */
+  --lineHeightSmall: 1.1;
+  --lineHeightSmallLargeFont: 0.9;
+  --lineHeightEmoji: 1;
+  --lineHeightReset: normal;
+
+  --fontWeightMin: 400;
+  --fontWeightMax: 600;
+
+  --letterSpacingCaps: 0.03em;
+  --letterSpacingWCAG: 0.012em;
+  --wordSpacingWCAG: 0.016em;
+
+  --gap-I: calc(8 / 16 * 1rem);
+  --gap-II: 1rem;
+  --gap-III: calc(24 / 16 * 1rem);
+  --gap-IV: calc(32 /  16 * 1rem);
+  --gap-V: calc(48 / 16 * 1rem);
+
+  --headerMarginMin: 5vw;
+
+  --iconTriangleWidth: calc(14 / 16 * 1rem);
+  --iconTriangleHeight: calc(12 / 16 * 1rem);
+
+  --instructionLeftPadding: calc(30 / 16 * 1rem);
+
+  --tabBlockPadding: var(--gap-I);
+  /* --tabBlockPaddingCurrent: calc(12 / 16 * 1rem); */
+  --tabBlockPaddingCurrent: calc(16 / 16 * 1rem);
+  --tabCaptionPadding: calc(1 / 16 * 1rem);
+  --tabSelectedPadding: calc(10 / 16 * 1rem);
+  
+  --tabpanelPaddingMin: var(--gap-I);
+  --tabpanelPaddingIdeal: 1.5vmax;
+  --tabpanelPaddingMax: var(--gap-III);
+  --tabpanelHeightMin: calc(200 / 16 * 1rem);
+
+  --cardsContainerGapMin: var(--gap-I);
+  --cardsContainerGapIdeal: 1.5vmax;
+  --cardsContainerGapMax: var(--gap-III);
+
+  --cardWidthMin: calc(220 / 16 * 1rem);
+  --cardPaddingMin: 6%;
+  /* --cardPaddingMin: 5%; */
+  --cardPaddingMax: calc(22 / 16 * 1rem);
+
+  --cardWidth: 400px;
+
+  --wordLengthMin: 5ch;
+
+  --alertInset: var(--gap-III);
+  --alerWidthMax: calc(200 / 16 * 1rem);
+
+  /* Fonts */
+  --sans-I: 'Trebuchet MS';
+  --sans-II: Verdana;
+  --sans-III: Arial;
+  --sans-IV: Tahoma;
+  --serif-I: Georgia;
+  --serif-II: 'Times New Roman';
+
+  --underlinedNoBorder: underline;
+
+  /* Degrees */
+  --turnUpSideDown: 180deg;
+  --turnReset: 0deg;
+
+  /* Position */
+  --positionInFlow: relative;
+  --positionOutOfFlow: absolute;
+
+  --shiftDownConcealer: calc(-5 / 16 * 1rem);
+  --shiftLeftConcealer: 0;
+
+  /* Layers */
+  --layerLower-I: -1;
+  --layerHigher-I: 1;
+
+  /* Grid */
+  --lastColumn: -1;
+  --allColumns: 1 / -1;
+
+  /* Animations */
+  --animationDuration-I: 1.5s;
+  --animationDuration-II: 3.5s;
+  --animationDuration-III: 1s;
+  --once: 1;
+  --transitionDuration-I: 0.1s;
+  --transitionDuration-II: 0.2s;
+  --transitionDuration-III: 0.25s;
+  --transitionDurationNone: 0s;
+
+  /* Opacity */
+  --invisible: 0;
+  --visible:1;
+
+  /* Resets */
+  --reset: none;
+  --noEvents: none;
+  --resetNumber: 0;
+
+  /* Semantic */
+  --colorPrimary: var(--black);
+  --colorSecondary: var(--white);
+  --colorPrimaryInverted: var(--colorSecondary);
+
+  --colorDisabledLight: var(--greyLight);
+  --colorDisabledDark: var(--greyDark);
+  --colorDisabledMedium: var(--greyMedium);
+
+  --colorSuccessDarkTheme: var(--greenDarkTheme);
+  --colorSuccessLightTheme: var(--greenLightTheme);
+  --colorErrorDarkTheme: var(--redDarkTheme);
+  --colorErrorLightTheme: var(--redLightTheme);
+
+  --clipPathTriangle: polygon(50% 0, 100% 100%, 0 100%);
+}

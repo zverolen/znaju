@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd, hr, ul, ol {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+body {
+  /* min-height: 100vh; */
+ 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* main {
+  flex: 2;
+} */
+
+/* footer {
+  margin-top: auto;
+} */
+
+button:is([role="tab"]) {
+  padding: 0;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+a:focus-visible {
+  outline-offset: 0px;
+}
+
+span,
+a,
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+:target {
+  scroll-margin-block: 5ex;
+}
+
+::after {
+  display: inline-block;
+}

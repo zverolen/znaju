@@ -1,0 +1,8 @@
+.practice {
+  margin-block: var(--gap-III);
+}
+
+.practice > div > div {
+  display: flex;
+  gap: var(--gap-II);
+}
