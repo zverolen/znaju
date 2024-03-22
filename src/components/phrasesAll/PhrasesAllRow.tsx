@@ -1,12 +1,15 @@
+interface PhraseLocal {
+  id: string;
+  created_at: string;
+  practiced_count: number;
+  correct_count: number;
+  russian: string;
+  serbian: string;
+  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
+}
+
 interface PhrasesAllProps {
-  data: {
-    id: string;
-    created_at: string;
-    practiced_count: number;
-    correct_count: number;
-    russian: string;
-    serbian: string;
-  }
+  data: PhraseLocal
 }
 
  const PhrasesAllRow = ({ data }: PhrasesAllProps) => {

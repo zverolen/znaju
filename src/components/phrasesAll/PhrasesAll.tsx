@@ -3,6 +3,16 @@ import { useSelector } from "react-redux"
 import { selectAllPhrases } from "../../features/phrases/phrasesSlice"
 import PhrasesAllRow from "./PhrasesAllRow"
 
+interface PhraseLocal {
+  id: string;
+  created_at: string;
+  practiced_count: number;
+  correct_count: number;
+  russian: string;
+  serbian: string;
+  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
+}
+
 export default function PhrasesAll() {
   const allPhrases = useSelector(selectAllPhrases)
   // console.log(allPhrases)
@@ -18,7 +28,7 @@ export default function PhrasesAll() {
           <th scope="col">Учу!</th>
           <th scope="col">Всего</th>
         </tr>
-        {allPhrases.map(phrase => <PhrasesAllRow key={phrase.id} data={phrase} />)}
+        {allPhrases.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} />)}
       </tbody>
     </table>
     </>

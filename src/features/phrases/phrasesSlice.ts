@@ -9,6 +9,17 @@ interface SetOrderPayload {
   phraseSessionStatus: string;
 }
 
+
+//     {
+//       "id": "d81cd6fe-404a-4c90-a46c-8c8f9e83ceee",
+//       "created_at": "2024-03-18T08:43:17.260173+00:00",
+//       "serbian": "Šta je tvoja sestra?",
+//       "russian": "Кем работает твоя сестра?",
+//       "practiced_count": 15,
+//       "correct_count": 2
+//   }
+
+
 interface Phrase {
   id: string;
   created_at: string;
@@ -16,6 +27,10 @@ interface Phrase {
   correct_count: number;
   russian: string;
   serbian: string;
+}
+
+interface PhraseLocal extends Phrase {
+  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
 }
 
 interface PhrasesState {
@@ -26,7 +41,7 @@ interface PhrasesState {
   error: null;
 }
 
-type Phrases = Phrase[]
+type PhrasesLocal = PhraseLocal[]
 
 const initialState: PhrasesState = {
   phrases: [],
@@ -98,11 +113,11 @@ const selectPracticeIds = (state) => {
 
 export const selectPhrasesStatus = state => state.phrases.status
 
-export const selectPracticedPhrases = createSelector([selectAllPhrases], phrases => phrases.filter(phrase => phrase.phraseSessionStatus !== 'new'))
+export const selectPracticedPhrases = createSelector([selectAllPhrases], phrases => phrases.filter((phrase: PhraseLocal) => phrase.phraseSessionStatus !== 'new'))
 export const selectNewPhrases = createSelector([selectAllPhrases], phrases => 
-  phrases.filter(phrase => phrase.phraseSessionStatus === 'new'))
-export const selectCorrectPhrases = createSelector([selectAllPhrases], phrases => phrases.filter(phrase => phrase.phraseSessionStatus === 'correct'))
-export const selectWrongPhrases = createSelector([selectAllPhrases], phrases => phrases.filter(phrase => phrase.phraseSessionStatus === 'wrong'))
+  phrases.filter((phrase: PhraseLocal) => phrase.phraseSessionStatus === 'new'))
+export const selectCorrectPhrases = createSelector([selectAllPhrases], phrases => phrases.filter((phrase: PhraseLocal) => phrase.phraseSessionStatus === 'correct'))
+export const selectWrongPhrases = createSelector([selectAllPhrases], phrases => phrases.filter((phrase: PhraseLocal) => phrase.phraseSessionStatus === 'wrong'))
 
 // in research
 export const selectTotalNumberOfPhrases = createSelector([selectAllPhrases], phrases => phrases.length)
@@ -111,7 +126,7 @@ export const selectNumberOfCorrectPhrases = createSelector([selectCorrectPhrases
 export const selectNumberOfWrongPhrases = createSelector([selectWrongPhrases], phrases => phrases.length)
 
 export const selectCurrentPhrase = createSelector([selectAllPhrases, selectPracticeIds], (phrases, ids) => {
-  return phrases.find(phrase => phrase.id === ids[0])
+  return phrases.find((phrase: PhraseLocal) => phrase.id === ids[0])
 })
 
 export const fetchPhrases = createAsyncThunk('phrases/fetchPhrases', async () => {  
@@ -135,17 +150,7 @@ export const updatePhraseCount = createAsyncThunk(
     const { data, error } = await supabase.from("phrases").update(updates).eq('id', id).select()
 
     if (error) { console.log(error) }
-    // return data
-//     return [
-//     {
-//       "id": "d81cd6fe-404a-4c90-a46c-8c8f9e83ceee",
-//       "created_at": "2024-03-18T08:43:17.260173+00:00",
-//       "serbian": "Šta je tvoja sestra?",
-//       "russian": "Кем работает твоя сестра?",
-//       "practiced_count": 15,
-//       "correct_count": 2
-//   }
-// ]
+
 })
 
 export default phrasesSlice.reducer

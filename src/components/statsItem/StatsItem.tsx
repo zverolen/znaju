@@ -1,6 +1,14 @@
 import { NavLink } from 'react-router-dom'
 
-export default function StatsItem({ name, statNum, statPercent, id, route }) {
+interface StatsItemProps {
+  name: string;
+  statNum: number;
+  statPercent: number;
+  id: string;
+  route: string;
+}
+
+const StatsItem = ({ name, statNum, statPercent, id, route }: StatsItemProps) => {
   return (
     <NavLink id={id} to={route} data-testid={id}>
       <span>{name} </span>
@@ -9,3 +17,5 @@ export default function StatsItem({ name, statNum, statPercent, id, route }) {
     </NavLink>
   )
 }
+
+export default StatsItem

@@ -1,17 +1,34 @@
 import style from './SessionOverviewRow.module.css'
 
-export default function SessionOverviewRow({ data, status }) {
+interface PhraseLocal {
+  id: string;
+  created_at: string;
+  practiced_count: number;
+  correct_count: number;
+  russian: string;
+  serbian: string;
+  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
+}
+
+type PhraseStatus = 'new' | 'skipped' | 'correct' | 'wrong'
+
+interface SessionOverviewRowProps {
+  data: PhraseLocal;
+  phraseStatus: PhraseStatus;
+}
+
+const  SessionOverviewRow = ({ data, phraseStatus }: SessionOverviewRowProps) => {
 
   let phraseSessionStatus
   let phraseIcon
 
-  if (status === 'correct') {
+  if (phraseStatus === 'correct') {
     phraseSessionStatus = 'Знаю!'
     phraseIcon = '🧐'
-  } else if (status === 'wrong')  {
+  } else if (phraseStatus === 'wrong')  {
     phraseSessionStatus = 'Учу!'
     phraseIcon = '🤔'
-  } else if (status === 'skipped')  {
+  } else if (phraseStatus === 'skipped')  {
     phraseSessionStatus = 'Пропущено'
     phraseIcon = null
   }
@@ -28,3 +45,5 @@ export default function SessionOverviewRow({ data, status }) {
     </tr>
   )
 }
+
+export default SessionOverviewRow;

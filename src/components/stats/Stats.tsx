@@ -15,16 +15,16 @@ import {
 
 export default function Stats() {
   // in research
-  const allPhrasesNum = useSelector(selectTotalNumberOfPhrases)
+  const allPhrasesNum: number = useSelector(selectTotalNumberOfPhrases)
 
-  const newPhrasesNum = useSelector(selectNumberOfNewPhrases)
-  const newPhrasesPercent = newPhrasesNum * 100 / allPhrasesNum
+  const newPhrasesNum: number = useSelector(selectNumberOfNewPhrases)
+  const newPhrasesPercent: number = newPhrasesNum * 100 / allPhrasesNum
   
-  const correctPhrasesNum = useSelector(selectNumberOfCorrectPhrases)
-  const correctPhrasesPercent = correctPhrasesNum * 100 / allPhrasesNum
+  const correctPhrasesNum: number = useSelector(selectNumberOfCorrectPhrases)
+  const correctPhrasesPercent: number = correctPhrasesNum * 100 / allPhrasesNum
 
-  const wrongPhrasesNum = useSelector(selectNumberOfWrongPhrases)
-  const wrongPhrasesPercent = wrongPhrasesNum * 100 / allPhrasesNum
+  const wrongPhrasesNum: number = useSelector(selectNumberOfWrongPhrases)
+  const wrongPhrasesPercent: number = wrongPhrasesNum * 100 / allPhrasesNum
 
   return(
     <div id="stats" className={style.stats}>

@@ -10,13 +10,16 @@ import {
 
 import style from "./Practice.module.css"
 
+type CheckStatus = 'revealed' | 'correct' | 'wrong'
+type PracticeStatus = 'new' | 'skipped' | 'correct' | 'wrong'
+
 export default function Practice() {
   const [phraseProgress, setPhraseProgress] = useState('new')
 
   const dispatch = useDispatch()
   const currentPhrase = useSelector(selectCurrentPhrase)
 
-  const practiceRef = useRef(null)
+  const practiceRef = useRef<HTMLParagraphElement>(null)
 
   let phraseContent
   let buttons
@@ -58,23 +61,27 @@ export default function Practice() {
     }
   } 
 
-  function handlePhraseCheck(step) {
-    setPhraseProgress(step)
-    practiceRef.current.focus()
+  function handlePhraseCheck(checkStatus: CheckStatus) {
+    setPhraseProgress(checkStatus)
+    if (practiceRef.current !== null) {
+      practiceRef.current.focus()
+    }
   }
 
-  function handlePhraseChange(status) {
+  function handlePhraseChange(practiceStatus: PracticeStatus) {
 
-    dispatch(setOrderForPhrasesInPractice({id: currentPhrase.id, phraseSessionStatus: status}))
-    dispatch(setPhraseSessionStatus({id: currentPhrase.id, phraseSessionStatus: status}))
+    dispatch(setOrderForPhrasesInPractice({id: currentPhrase.id, phraseSessionStatus: practiceStatus}))
+    dispatch(setPhraseSessionStatus({id: currentPhrase.id, phraseSessionStatus: practiceStatus}))
 
-    if (status === 'correct' || status === 'wrong') {
-      dispatch(updatePhraseCount({id: currentPhrase.id, practiceStatus: status}))
+    if (practiceStatus === 'correct' || practiceStatus === 'wrong') {
+      dispatch(updatePhraseCount({id: currentPhrase.id, practiceStatus: practiceStatus}))
     }
     
     setPhraseProgress('new')
 
-    practiceRef.current.focus()
+    if (practiceRef.current !== null) {
+      practiceRef.current.focus()
+    }    
   }
 
   return(
@@ -82,7 +89,7 @@ export default function Practice() {
       <h2>{phraseProgress === 'correct' || phraseProgress === 'wrong' ? 'Результат' : 'Как сказать по-сербски?'}</h2>
       <div>
         <div>
-          <p tabIndex="0" ref={practiceRef}  data-testid="practice-phrase">
+          <p tabIndex={0} ref={practiceRef}  data-testid="practice-phrase">
             {currentPhrase ? phraseContent : note}
           </p>
         </div>

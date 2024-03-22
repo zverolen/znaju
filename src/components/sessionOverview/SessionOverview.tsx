@@ -5,6 +5,16 @@ import { selectPracticedPhrases } from "../../features/phrases/phrasesSlice"
 import SessionOverviewRow from "../sessionOverviewRow/SessionOverviewRow"
 import style from "./SessionOverview.module.css"
 
+interface PhraseLocal {
+  id: string;
+  created_at: string;
+  practiced_count: number;
+  correct_count: number;
+  russian: string;
+  serbian: string;
+  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
+}
+
 export default function SessionOverview() {
   const practicedPhrases = useSelector(selectPracticedPhrases)
 
@@ -14,7 +24,7 @@ export default function SessionOverview() {
       {practicedPhrases.length > 0 && 
         <table role="table" aria-labelledby="sessionPhrasesSubheading">
         <tbody role="rowgroup">
-          {practicedPhrases.map(phrase => <SessionOverviewRow key={phrase.id} data={phrase} status={phrase.phraseSessionStatus} />)}
+          {practicedPhrases.map((phrase: PhraseLocal) => <SessionOverviewRow key={phrase.id} data={phrase} status={phrase.phraseSessionStatus} />)}
         </tbody>
         </table>
       }
