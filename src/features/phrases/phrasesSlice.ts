@@ -1,6 +1,5 @@
-import { createSelector, createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import type { Action, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from "@reduxjs/toolkit/query"
+import { createSelector, createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
+import type { RootState } from "../../app/store"
 import { phrases } from "../../data/data"
 import { supabase } from "../../supabaseClient"
 
@@ -33,15 +32,13 @@ interface PhraseLocal extends Phrase {
   phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
 }
 
-interface PhrasesState {
-  phrases: Phrase[];
-  phrasesInPractice: Phrase[];
+export interface PhrasesState {
+  phrases: PhraseLocal[];
+  phrasesInPractice: string[];
   currentPhraseId: string;
   status: string;
-  error: null;
+  error: null | string | undefined;
 }
-
-type PhrasesLocal = PhraseLocal[]
 
 const initialState: PhrasesState = {
   phrases: [],
@@ -62,15 +59,19 @@ export const phrasesSlice = createSlice({
       const { phraseSessionStatus} = action.payload
       if (phraseSessionStatus === 'new') {
         const repeatedId = state.phrasesInPractice.shift()
-        state.phrasesInPractice.push(repeatedId)
+        if (repeatedId) {
+          state.phrasesInPractice.push(repeatedId)
+        }
       } else {
         state.phrasesInPractice.shift()
       }
     },
-    setPhraseSessionStatus: (state, action) => {
+    setPhraseSessionStatus: (state, action: PayloadAction<SetOrderPayload>) => {
       const { id, phraseSessionStatus} = action.payload
       const updatedPhrase = state.phrases.find(phrase => phrase.id === id)
+      if (updatedPhrase) {
         updatedPhrase.phraseSessionStatus = phraseSessionStatus
+      }
     }
   },
   extraReducers(builder) {
@@ -80,21 +81,49 @@ export const phrasesSlice = createSlice({
       })
       .addCase(fetchPhrases.fulfilled, (state, action) => {
         // Updates state in two places :(
-        state.status = 'success'
-        state.phrases = action.payload.map(phrase => {
-          return {...phrase, phraseSessionStatus: 'new'}
-        })
-        state.phrasesInPractice = action.payload.map(phrase => phrase.id)
+        if (action.payload) {
+          state.status = 'success'
+          state.phrases = action.payload.map(phrase => {
+            return {...phrase, phraseSessionStatus: 'new'}
+          })
+          state.phrasesInPractice = action.payload.map(phrase => phrase.id)
+        }
       })
       .addCase(fetchPhrases.rejected, (state, action) => {
         state.status = 'failed'
         state.error = action.error.message
       })
       .addCase(updatePhraseCount.fulfilled, (state, action) => {
-        const { id, correct_count, practiced_count } = action.payload[0]
-        let practicedPhrase = state.phrases.find(phrase => phrase.id === id)
-        practicedPhrase.correct_count = correct_count
-        practicedPhrase.practiced_count = practiced_count
+        if (action.payload) {
+          const { id, correct_count, practiced_count } = action.payload[0]
+          const practicedPhrase = state.phrases.find(phrase => phrase.id === id)
+
+          if (practicedPhrase) {
+            practicedPhrase.correct_count = correct_count
+            practicedPhrase.practiced_count = practiced_count
+          } 
+        }
+      })
+      .addCase(updateCountForCorrect.fulfilled, (state, action) => {
+        if (action.payload) {
+          const { id, correct_count, practiced_count } = action.payload[0]
+          const practicedPhrase = state.phrases.find(phrase => phrase.id === id)
+
+          if (practicedPhrase) {
+            practicedPhrase.correct_count = correct_count
+            practicedPhrase.practiced_count = practiced_count
+          } 
+        }
+      })
+      .addCase(updateCountForWrong.fulfilled, (state, action) => {
+        if (action.payload) {
+          const { id, practiced_count } = action.payload[0]
+          const practicedPhrase = state.phrases.find(phrase => phrase.id === id)
+
+          if (practicedPhrase) {
+            practicedPhrase.practiced_count = practiced_count
+          } 
+        }
       })
   }
 })
@@ -105,13 +134,13 @@ export const {
   setOrderForPhrasesInPractice
 } = phrasesSlice.actions
 
-export const selectAllPhrases = (state) => state.phrases.phrases
+export const selectAllPhrases = (state: RootState) => state.phrases.phrases
 
-const selectPracticeIds = (state) => {
+const selectPracticeIds = (state: RootState) => {
   return state.phrases.phrasesInPractice
 }
 
-export const selectPhrasesStatus = state => state.phrases.status
+export const selectPhrasesStatus = (state: RootState)=> state.phrases.status
 
 export const selectPracticedPhrases = createSelector([selectAllPhrases], phrases => phrases.filter((phrase: PhraseLocal) => phrase.phraseSessionStatus !== 'new'))
 export const selectNewPhrases = createSelector([selectAllPhrases], phrases => 
@@ -125,7 +154,7 @@ export const selectNumberOfNewPhrases = createSelector([selectNewPhrases], phras
 export const selectNumberOfCorrectPhrases = createSelector([selectCorrectPhrases], phrases => phrases.length)
 export const selectNumberOfWrongPhrases = createSelector([selectWrongPhrases], phrases => phrases.length)
 
-export const selectCurrentPhrase = createSelector([selectAllPhrases, selectPracticeIds], (phrases, ids) => {
+export const selectCurrentPhrase = createSelector([selectAllPhrases, selectPracticeIds], (phrases, ids): PhraseLocal => {
   return phrases.find((phrase: PhraseLocal) => phrase.id === ids[0])
 })
 
@@ -139,18 +168,74 @@ export const updatePhraseCount = createAsyncThunk(
   async ({ id, practiceStatus }) => 
   {
     const countData = await supabase.from("phrases").select('practiced_count, correct_count').eq('id', id)
-    const practicedCount = countData.data[0].practiced_count + 1
-    const correctCount = practiceStatus === 'correct' ? countData.data[0].correct_count + 1 : countData.data[0].correct_count
     
-    const updates = {
-      practiced_count: practicedCount,
-      correct_count: correctCount
+    let practicedCount: number;
+    let correctCount: number;
+    
+    if (countData.data) {
+      practicedCount = countData.data[0].practiced_count + 1
+      correctCount = practiceStatus === 'correct' ? countData.data[0].correct_count + 1 : countData.data[0].correct_count
+
+      const updates = {
+        practiced_count: practicedCount,
+        correct_count: correctCount
+      }
+  
+      const { data, error } = await supabase.from("phrases").update(updates).eq('id', id).select()
+  
+      if (error) { console.log(error) }
+  
+      return data
     }
+})
 
-    const { data, error } = await supabase.from("phrases").update(updates).eq('id', id).select()
+export const updateCountForCorrect = createAsyncThunk(
+  'phrases/updateCountForCorrect', 
+  async (id) => 
+  {
+    const countData = await supabase.from("phrases").select('practiced_count, correct_count').eq('id', id)
+    
+    let practicedCount: number
+    let correctCount: number
+    
+    if (countData.data) {
+      practicedCount = countData.data[0].practiced_count + 1
+      correctCount = countData.data[0].correct_count
 
-    if (error) { console.log(error) }
+      const updates = {
+        practiced_count: practicedCount,
+        correct_count: correctCount
+      }
+  
+      const { data, error } = await supabase.from("phrases").update(updates).eq('id', id).select()
+  
+      if (error) { console.log(error) }
+  
+      return data
+    }
+})
 
+export const updateCountForWrong = createAsyncThunk(
+  'phrases/updateCountForWrong', 
+  async (id) => 
+  {
+    const countData = await supabase.from("phrases").select('practiced_count').eq('id', id)
+    
+    let practicedCount: number
+    
+    if (countData.data) {
+      practicedCount = countData.data[0].practiced_count + 1
+
+      const updates = {
+        practiced_count: practicedCount,
+      }
+  
+      const { data, error } = await supabase.from("phrases").update(updates).eq('id', id).select()
+  
+      if (error) { console.log(error) }
+  
+      return data
+    }
 })
 
 export default phrasesSlice.reducer

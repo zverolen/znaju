@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useAppSelector } from "../../app/hooks";
 
 import { selectAllPhrases } from "../../features/phrases/phrasesSlice"
 import PhrasesAllRow from "./PhrasesAllRow"
@@ -14,7 +14,7 @@ interface PhraseLocal {
 }
 
 export default function PhrasesAll() {
-  const allPhrases = useSelector(selectAllPhrases)
+  const allPhrases = useAppSelector(selectAllPhrases)
   // console.log(allPhrases)
   return(
     <>

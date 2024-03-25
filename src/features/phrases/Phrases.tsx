@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../app/hooks'
 
 import { selectPhrasesStatus, } from "./phrasesSlice"
 
@@ -6,7 +6,7 @@ import Practice from "../../components/practice/Practice"
 import SessionOverview from "../../components/sessionOverview/SessionOverview"
 
 export default function Phrases() {
-  const status = useSelector(selectPhrasesStatus)
+  const status = useAppSelector(selectPhrasesStatus)
 
   let practiceContent
   let sessionContent

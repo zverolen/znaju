@@ -1,11 +1,14 @@
 import { useRef, useState } from 'react'
-import { useDispatch, useSelector } from "react-redux"
+// import { useDispatch, useSelector } from "react-redux"
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
 
 import { 
   setPhraseSessionStatus,
   selectCurrentPhrase,
   setOrderForPhrasesInPractice,
-  updatePhraseCount
+  updatePhraseCount,
+  updateCountForCorrect,
+  updateCountForWrong
 } from '../../features/phrases/phrasesSlice'
 
 import style from "./Practice.module.css"
@@ -13,11 +16,21 @@ import style from "./Practice.module.css"
 type CheckStatus = 'revealed' | 'correct' | 'wrong'
 type PracticeStatus = 'new' | 'skipped' | 'correct' | 'wrong'
 
+interface PhraseLocal {
+  id: string;
+  created_at: string;
+  practiced_count: number;
+  correct_count: number;
+  russian: string;
+  serbian: string;
+  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
+}
+
 export default function Practice() {
   const [phraseProgress, setPhraseProgress] = useState('new')
 
-  const dispatch = useDispatch()
-  const currentPhrase = useSelector(selectCurrentPhrase)
+  const dispatch = useAppDispatch()
+  const currentPhrase: PhraseLocal = useAppSelector(selectCurrentPhrase)
 
   const practiceRef = useRef<HTMLParagraphElement>(null)
 
@@ -75,6 +88,12 @@ export default function Practice() {
 
     if (practiceStatus === 'correct' || practiceStatus === 'wrong') {
       dispatch(updatePhraseCount({id: currentPhrase.id, practiceStatus: practiceStatus}))
+    }
+
+    if (practiceStatus === 'correct') {
+      dispatch(updateCountForCorrect(currentPhrase.id))
+    } else if (practiceStatus ==='wrong') {
+      dispatch(updateCountForWrong(currentPhrase.id))
     }
     
     setPhraseProgress('new')

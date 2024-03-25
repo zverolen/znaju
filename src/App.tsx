@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { Outlet } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from './app/hooks'
 
 import { fetchPhrases, selectPhrasesStatus } from './features/phrases/phrasesSlice'
 
@@ -11,8 +11,8 @@ import Stats from './components/stats/Stats'
 
 function App() {
 
-  const dispatch = useDispatch()
-  const status = useSelector(selectPhrasesStatus)
+  const dispatch = useAppDispatch()
+  const status = useAppSelector(selectPhrasesStatus)
 
   useEffect(() => {
     if (status === 'idle') {

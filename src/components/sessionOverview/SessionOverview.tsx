@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useAppSelector } from "../../app/hooks"
 
 import { selectPracticedPhrases } from "../../features/phrases/phrasesSlice"
 
@@ -16,7 +16,7 @@ interface PhraseLocal {
 }
 
 export default function SessionOverview() {
-  const practicedPhrases = useSelector(selectPracticedPhrases)
+  const practicedPhrases = useAppSelector(selectPracticedPhrases)
 
   return(
     <div className={style.sessionOverview} id="sessionOverview">
@@ -24,7 +24,7 @@ export default function SessionOverview() {
       {practicedPhrases.length > 0 && 
         <table role="table" aria-labelledby="sessionPhrasesSubheading">
         <tbody role="rowgroup">
-          {practicedPhrases.map((phrase: PhraseLocal) => <SessionOverviewRow key={phrase.id} data={phrase} status={phrase.phraseSessionStatus} />)}
+          {practicedPhrases.map((phrase: PhraseLocal) => <SessionOverviewRow key={phrase.id} data={phrase} phraseStatus={phrase.phraseSessionStatus} />)}
         </tbody>
         </table>
       }

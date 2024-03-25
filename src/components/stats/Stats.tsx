@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useAppSelector } from "../../app/hooks"
 
 import StatsItem from "../statsItem/StatsItem"
 
@@ -15,15 +15,15 @@ import {
 
 export default function Stats() {
   // in research
-  const allPhrasesNum: number = useSelector(selectTotalNumberOfPhrases)
+  const allPhrasesNum: number = useAppSelector(selectTotalNumberOfPhrases)
 
-  const newPhrasesNum: number = useSelector(selectNumberOfNewPhrases)
+  const newPhrasesNum: number = useAppSelector(selectNumberOfNewPhrases)
   const newPhrasesPercent: number = newPhrasesNum * 100 / allPhrasesNum
   
-  const correctPhrasesNum: number = useSelector(selectNumberOfCorrectPhrases)
+  const correctPhrasesNum: number = useAppSelector(selectNumberOfCorrectPhrases)
   const correctPhrasesPercent: number = correctPhrasesNum * 100 / allPhrasesNum
 
-  const wrongPhrasesNum: number = useSelector(selectNumberOfWrongPhrases)
+  const wrongPhrasesNum: number = useAppSelector(selectNumberOfWrongPhrases)
   const wrongPhrasesPercent: number = wrongPhrasesNum * 100 / allPhrasesNum
 
   return(
