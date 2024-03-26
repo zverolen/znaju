@@ -3,11 +3,12 @@ import type { RootState } from "../../app/store"
 import { phrases } from "../../data/data"
 import { supabase } from "../../supabaseClient"
 
+type PhraseSessionStatus = 'new' | 'skipped' | 'correct' | 'wrong'
+
 interface SetOrderPayload {
   id: string; 
-  phraseSessionStatus: string;
+  phraseSessionStatus: PhraseSessionStatus;
 }
-
 
 //     {
 //       "id": "d81cd6fe-404a-4c90-a46c-8c8f9e83ceee",
@@ -28,8 +29,10 @@ interface Phrase {
   serbian: string;
 }
 
+
+
 interface PhraseLocal extends Phrase {
-  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
+  phraseSessionStatus: PhraseSessionStatus;
 }
 
 export interface PhrasesState {
@@ -67,14 +70,16 @@ export const phrasesSlice = createSlice({
       }
     },
     setPhraseSessionStatus: (state, action: PayloadAction<SetOrderPayload>) => {
-      const { id, phraseSessionStatus} = action.payload
+      // const { id, phraseSessionStatus} = action.payload
+      const id: string = action.payload.id
+      const phraseSessionStatus: PhraseSessionStatus = action.payload.phraseSessionStatus
       const updatedPhrase = state.phrases.find(phrase => phrase.id === id)
       if (updatedPhrase) {
         updatedPhrase.phraseSessionStatus = phraseSessionStatus
       }
     }
   },
-  extraReducers(builder) {
+  extraReducers: builder => {
     builder
       .addCase(fetchPhrases.pending, (state) => {
         state.status = 'loading'
@@ -93,17 +98,17 @@ export const phrasesSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message
       })
-      .addCase(updatePhraseCount.fulfilled, (state, action) => {
-        if (action.payload) {
-          const { id, correct_count, practiced_count } = action.payload[0]
-          const practicedPhrase = state.phrases.find(phrase => phrase.id === id)
+      // .addCase(updatePhraseCount.fulfilled, (state, action) => {
+      //   if (action.payload) {
+      //     const { id, correct_count, practiced_count } = action.payload[0]
+      //     const practicedPhrase = state.phrases.find(phrase => phrase.id === id)
 
-          if (practicedPhrase) {
-            practicedPhrase.correct_count = correct_count
-            practicedPhrase.practiced_count = practiced_count
-          } 
-        }
-      })
+      //     if (practicedPhrase) {
+      //       practicedPhrase.correct_count = correct_count
+      //       practicedPhrase.practiced_count = practiced_count
+      //     } 
+      //   }
+      // })
       .addCase(updateCountForCorrect.fulfilled, (state, action) => {
         if (action.payload) {
           const { id, correct_count, practiced_count } = action.payload[0]
@@ -154,8 +159,10 @@ export const selectNumberOfNewPhrases = createSelector([selectNewPhrases], phras
 export const selectNumberOfCorrectPhrases = createSelector([selectCorrectPhrases], phrases => phrases.length)
 export const selectNumberOfWrongPhrases = createSelector([selectWrongPhrases], phrases => phrases.length)
 
-export const selectCurrentPhrase = createSelector([selectAllPhrases, selectPracticeIds], (phrases, ids): PhraseLocal => {
-  return phrases.find((phrase: PhraseLocal) => phrase.id === ids[0])
+export const selectCurrentPhrase = createSelector([selectAllPhrases, selectPracticeIds], (phrases, ids) => {
+  return phrases.find((phrase: PhraseLocal) => {
+    return phrase.id === ids[0]
+  }) as PhraseLocal
 })
 
 export const fetchPhrases = createAsyncThunk('phrases/fetchPhrases', async () => {  
@@ -163,35 +170,35 @@ export const fetchPhrases = createAsyncThunk('phrases/fetchPhrases', async () =>
   return data
 })
 
-export const updatePhraseCount = createAsyncThunk(
-  'phrases/updatePhraseCount', 
-  async ({ id, practiceStatus }) => 
-  {
-    const countData = await supabase.from("phrases").select('practiced_count, correct_count').eq('id', id)
+// export const updatePhraseCount = createAsyncThunk(
+//   'phrases/updatePhraseCount', 
+//   async ({ id, practiceStatus }) => 
+//   {
+//     const countData = await supabase.from("phrases").select('practiced_count, correct_count').eq('id', id)
     
-    let practicedCount: number;
-    let correctCount: number;
+//     let practicedCount: number;
+//     let correctCount: number;
     
-    if (countData.data) {
-      practicedCount = countData.data[0].practiced_count + 1
-      correctCount = practiceStatus === 'correct' ? countData.data[0].correct_count + 1 : countData.data[0].correct_count
+//     if (countData.data) {
+//       practicedCount = countData.data[0].practiced_count + 1
+//       correctCount = practiceStatus === 'correct' ? countData.data[0].correct_count + 1 : countData.data[0].correct_count
 
-      const updates = {
-        practiced_count: practicedCount,
-        correct_count: correctCount
-      }
+//       const updates = {
+//         practiced_count: practicedCount,
+//         correct_count: correctCount
+//       }
   
-      const { data, error } = await supabase.from("phrases").update(updates).eq('id', id).select()
+//       const { data, error } = await supabase.from("phrases").update(updates).eq('id', id).select()
   
-      if (error) { console.log(error) }
+//       if (error) { console.log(error) }
   
-      return data
-    }
-})
+//       return data
+//     }
+// })
 
 export const updateCountForCorrect = createAsyncThunk(
   'phrases/updateCountForCorrect', 
-  async (id) => 
+  async (id: string) => 
   {
     const countData = await supabase.from("phrases").select('practiced_count, correct_count').eq('id', id)
     
@@ -217,7 +224,7 @@ export const updateCountForCorrect = createAsyncThunk(
 
 export const updateCountForWrong = createAsyncThunk(
   'phrases/updateCountForWrong', 
-  async (id) => 
+  async (id: string) => 
   {
     const countData = await supabase.from("phrases").select('practiced_count').eq('id', id)
     

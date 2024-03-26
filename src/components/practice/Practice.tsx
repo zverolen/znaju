@@ -6,7 +6,7 @@ import {
   setPhraseSessionStatus,
   selectCurrentPhrase,
   setOrderForPhrasesInPractice,
-  updatePhraseCount,
+  // updatePhraseCount,
   updateCountForCorrect,
   updateCountForWrong
 } from '../../features/phrases/phrasesSlice'
@@ -30,6 +30,7 @@ export default function Practice() {
   const [phraseProgress, setPhraseProgress] = useState('new')
 
   const dispatch = useAppDispatch()
+
   const currentPhrase: PhraseLocal = useAppSelector(selectCurrentPhrase)
 
   const practiceRef = useRef<HTMLParagraphElement>(null)
@@ -86,9 +87,9 @@ export default function Practice() {
     dispatch(setOrderForPhrasesInPractice({id: currentPhrase.id, phraseSessionStatus: practiceStatus}))
     dispatch(setPhraseSessionStatus({id: currentPhrase.id, phraseSessionStatus: practiceStatus}))
 
-    if (practiceStatus === 'correct' || practiceStatus === 'wrong') {
-      dispatch(updatePhraseCount({id: currentPhrase.id, practiceStatus: practiceStatus}))
-    }
+    // if (practiceStatus === 'correct' || practiceStatus === 'wrong') {
+    //   dispatch(updatePhraseCount({id: currentPhrase.id, practiceStatus: practiceStatus}))
+    // }
 
     if (practiceStatus === 'correct') {
       dispatch(updateCountForCorrect(currentPhrase.id))
