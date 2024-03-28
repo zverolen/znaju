@@ -1,28 +1,51 @@
 import { useAppSelector } from "../../app/hooks";
 
-import type { CountSort, StatusSort } from "../../types/types";
+import type { StatusSort, IsInPercent, PhraseLocal, IsRareFirst } from "../../types/types";
 
 import { selectAllPhrases } from "../../features/phrases/phrasesSlice"
 import PhrasesAllRow from "./PhrasesAllRow"
 import Toolbar from "../toolbar/Toolbar";
 import { useState } from "react";
 
-interface PhraseLocal {
-  id: string;
-  created_at: string;
-  practiced_count: number;
-  correct_count: number;
-  russian: string;
-  serbian: string;
-  phraseSessionStatus: 'new' | 'skipped' | 'correct' | 'wrong';
+function sortByWrong(phrase1: PhraseLocal, phrase2: PhraseLocal): number {
+  const wrong1 = phrase1.practiced_count - phrase1.correct_count
+  const wrong2 = phrase2.practiced_count - phrase2.correct_count
+  return wrong2 - wrong1
 }
 
 export default function PhrasesAll() {
-  const [isInPersent, setIsInPercent ] = useState("false")
-  const [countSort, setCountSort ] = useState<CountSort>('rare')
-  const [phraseStatusSort, setPhraseStatusSort ] = useState<StatusSort>('withoutAnswer')
+  const [ isRareFirst, setIsRareFirst ] = useState<IsRareFirst>("false")
+  const [isInPersent, setIsInPercent ] = useState<IsInPercent>("false")
+  const [phraseStatusSort, setStatusSort ] = useState<StatusSort>('withoutAnswer')
   const allPhrases = useAppSelector(selectAllPhrases)
-  // console.log(allPhrases)
+  const correctSortOrder = allPhrases.slice().sort((ph1, ph2) => ph2.correct_count - ph1.correct_count)
+  const wrongSortOrder = allPhrases.slice().sort(sortByWrong)
+  const withoutAnswerSortOrder = allPhrases.slice().sort((a, b) => a.practiced_count - b.practiced_count)
+
+  let phrasesContent!: JSX.Element[];
+
+  if (phraseStatusSort === 'withoutAnswer') {
+    phrasesContent = withoutAnswerSortOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
+  } else if (phraseStatusSort === 'correct') {
+    if (isRareFirst === "true") {
+      // ideal default
+      const reversedOrder = correctSortOrder.reverse()
+      phrasesContent = reversedOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
+    } else {
+      // temp default
+      phrasesContent = correctSortOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
+    }
+  } else {
+    if (isRareFirst === "true") {
+      // ideal default
+      const reversedOrder = wrongSortOrder.reverse()
+      phrasesContent = reversedOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
+    } else {
+      // temp default
+      phrasesContent = wrongSortOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
+    }
+  }
+
 
   function handleDisplayChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.currentTarget.value
@@ -31,15 +54,19 @@ export default function PhrasesAll() {
     } else {
       setIsInPercent("false")
     }
-    console.log(isInPersent)
   }
 
-  function handleCountSortChange(sort: CountSort) {
-    // console.log(event)
+  function handleCountSortChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.currentTarget.value
+    if (value === "false") {
+      setIsRareFirst("true")
+    } else {
+      setIsRareFirst("false")
+    }
   }
 
   function handleStatusSortChange(sort: StatusSort) {
-    // console.log(phraseStatusSort)
+    setStatusSort(sort)
   }
 
   return(
@@ -50,6 +77,7 @@ export default function PhrasesAll() {
         onCountSortChange={handleCountSortChange}
         onStatusSortChange={handleStatusSortChange}
         isInPercent={isInPersent}
+        isRareFirst={isRareFirst}
       />
       <table role="table">
         <tbody role="rowgroup">
@@ -60,7 +88,7 @@ export default function PhrasesAll() {
             <th scope="col">Учу!</th>
             <th scope="col">Всего</th>
           </tr>
-          {allPhrases.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} />)}
+          {phrasesContent}
         </tbody>
       </table>
     </>

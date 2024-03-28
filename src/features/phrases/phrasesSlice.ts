@@ -29,8 +29,6 @@ interface Phrase {
   serbian: string;
 }
 
-
-
 interface PhraseLocal extends Phrase {
   phraseSessionStatus: PhraseSessionStatus;
 }
