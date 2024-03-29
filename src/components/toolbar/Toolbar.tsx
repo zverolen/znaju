@@ -3,34 +3,20 @@ import style from './Toolbar.module.css'
 import ToolbarMenu from "./ToolbarMenu"
 
 interface ToolbarProps {
-  onDisplayChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onCountSortChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onStatusSortChange: (phraseStatus: 'correct' | 'wrong' | 'withoutAnswer') => void;
-  isInPercent: string;
-  isRareFirst: string;
+  onInputChange: (checkbox: 'display' | 'frequency') => void;
+  isInPercent: boolean;
+  isRareFirst: boolean;
 }
 
-interface ToolbarState {
-  displayCheckbox: boolean;
-  frequencyCheckbox: boolean;
-}
+const Toolbar = ({ onStatusSortChange, onInputChange, isInPercent, isRareFirst }: ToolbarProps) => {
 
-const Toolbar = ({ onDisplayChange, onCountSortChange, onStatusSortChange, isInPercent, isRareFirst }: ToolbarProps) => {
-  const [ checkedCheckboxes, setCheckedCheckboxes ] = useState<ToolbarState>({
-    displayCheckbox: isInPercent === "true",
-    frequencyCheckbox: isRareFirst === "true"
-  })
-
-  function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const checkbox = event.target.id
-    if (checkbox === 'display') {
-      const newCheckboxValue: boolean = !checkedCheckboxes.displayCheckbox
-      setCheckedCheckboxes({ ...checkedCheckboxes, displayCheckbox: newCheckboxValue})
-      
-    } else {
-      const newCheckboxValue: boolean = !checkedCheckboxes.frequencyCheckbox
-      setCheckedCheckboxes({ ...checkedCheckboxes, frequencyCheckbox: newCheckboxValue})
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const checkbox = event.currentTarget.id
+    if (checkbox === "display" || checkbox === "frequency") {
+      onInputChange(checkbox)
     }
+   
   }
 
   return (
@@ -38,23 +24,21 @@ const Toolbar = ({ onDisplayChange, onCountSortChange, onStatusSortChange, isInP
       <div>
         <label htmlFor="display">В процентах</label>
         <input 
-          value={isInPercent} 
-          onChange={handleCheckboxChange} 
+          onChange={handleChange} 
           id="display" 
           type="checkbox" 
           tabIndex={-1} 
-          checked={checkedCheckboxes.displayCheckbox} 
+          checked={isInPercent} 
         />
       </div>
       <div>
         <label htmlFor="frequency">Сначала редкие</label>
         <input 
-          value={isRareFirst} 
-          onChange={onCountSortChange} 
+          onChange={handleChange} 
           id="frequency" 
           type="checkbox" 
           tabIndex={-1}
-          checked={checkedCheckboxes.frequencyCheckbox}
+          checked={isRareFirst}
         />
       </div>
       <ToolbarMenu menuName="без ответа" menuId="result">

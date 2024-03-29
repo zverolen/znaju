@@ -14,8 +14,8 @@ function sortByWrong(phrase1: PhraseLocal, phrase2: PhraseLocal): number {
 }
 
 export default function PhrasesAll() {
-  const [ isRareFirst, setIsRareFirst ] = useState<IsRareFirst>("false")
-  const [isInPersent, setIsInPercent ] = useState<IsInPercent>("false")
+  const [ isRareFirst, setIsRareFirst ] = useState<boolean>(false)
+  const [isInPersent, setIsInPercent ] = useState<boolean>(false)
   const [phraseStatusSort, setStatusSort ] = useState<StatusSort>('withoutAnswer')
   const allPhrases = useAppSelector(selectAllPhrases)
   const correctSortOrder = allPhrases.slice().sort((ph1, ph2) => ph2.correct_count - ph1.correct_count)
@@ -24,10 +24,14 @@ export default function PhrasesAll() {
 
   let phrasesContent!: JSX.Element[];
 
+  function handleStatusSortChange(sort: StatusSort) {
+    setStatusSort(sort)
+  }
+
   if (phraseStatusSort === 'withoutAnswer') {
     phrasesContent = withoutAnswerSortOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
   } else if (phraseStatusSort === 'correct') {
-    if (isRareFirst === "true") {
+    if (isRareFirst) {
       // ideal default
       const reversedOrder = correctSortOrder.reverse()
       phrasesContent = reversedOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
@@ -36,7 +40,7 @@ export default function PhrasesAll() {
       phrasesContent = correctSortOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
     }
   } else {
-    if (isRareFirst === "true") {
+    if (isRareFirst) {
       // ideal default
       const reversedOrder = wrongSortOrder.reverse()
       phrasesContent = reversedOrder.map((phrase: PhraseLocal) => <PhrasesAllRow key={phrase.id} data={phrase} isInPercent={isInPersent}/>)
@@ -46,36 +50,20 @@ export default function PhrasesAll() {
     }
   }
 
-
-  function handleDisplayChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const value = event.currentTarget.value
-    if (value === "false") {
-      setIsInPercent("true")
+  function handleInputChange(checkbox: 'display' | 'frequency') {
+    if (checkbox === 'display') {
+      setIsInPercent(!isInPersent)
     } else {
-      setIsInPercent("false")
+      setIsRareFirst(!isRareFirst)
     }
   }
-
-  function handleCountSortChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const value = event.currentTarget.value
-    if (value === "false") {
-      setIsRareFirst("true")
-    } else {
-      setIsRareFirst("false")
-    }
-  }
-
-  function handleStatusSortChange(sort: StatusSort) {
-    setStatusSort(sort)
-  }
-
+  
   return(
     <>
       <h3>Статистика за всё время.</h3>
       <Toolbar 
-        onDisplayChange={handleDisplayChange}
-        onCountSortChange={handleCountSortChange}
         onStatusSortChange={handleStatusSortChange}
+        onInputChange={handleInputChange}
         isInPercent={isInPersent}
         isRareFirst={isRareFirst}
       />
