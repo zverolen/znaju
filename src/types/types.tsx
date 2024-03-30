@@ -2,9 +2,6 @@ export type PhraseSessionStatus = 'new' | 'skipped' | 'correct' | 'wrong'
 
 export type CountSort = 'rare' | 'frequent'
 export type StatusSort = 'correct' | 'wrong' | 'withoutAnswer'
-export type IsInPercent = 'true' | 'false'
-export type IsRareFirst = 'true' | 'false'
-
 
 export interface Phrase {
   id: string;

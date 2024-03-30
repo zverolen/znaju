@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import style from './Toolbar.module.css'
 import ToolbarMenu from "./ToolbarMenu"
 

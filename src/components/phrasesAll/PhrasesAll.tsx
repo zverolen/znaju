@@ -1,6 +1,6 @@
 import { useAppSelector } from "../../app/hooks";
 
-import type { StatusSort, IsInPercent, PhraseLocal, IsRareFirst } from "../../types/types";
+import type { StatusSort, PhraseLocal } from "../../types/types";
 
 import { selectAllPhrases } from "../../features/phrases/phrasesSlice"
 import PhrasesAllRow from "./PhrasesAllRow"
