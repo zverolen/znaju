@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit' 
 
 import phrasesReducer from '../features/phrases/phrasesSlice'
-import profileReducer from '../features/profile/profileSlice'
+import userReducer from '../features/user/userSlice'
 
 export const store = configureStore({
   reducer: {
     phrases: phrasesReducer,
-    profile: profileReducer
+    user: userReducer
   }
 })
 

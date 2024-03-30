@@ -7,7 +7,7 @@ export default function Header() {
       <div>
         <button>Инструкция</button>
         <span>|</span>
-        <NavLink to="/account">Аккаунт</NavLink>
+        <NavLink to="/account">Войти</NavLink>
       </div>
     </header>
   )

@@ -15,6 +15,7 @@ import PhrasesAll from './components/phrasesAll/PhrasesAll.jsx'
 import PhrasesCorrect from './components/phrasesCorrect/PhrasesCorrect.jsx'
 import PhrasesWrong from './components/phrasesWrong/PhrasesWrong.jsx'
 import Phrases from './features/phrases/Phrases.jsx'
+import Account from './components/account/Account.js'
 import App from './App.jsx'
 
 import './index.css'
@@ -26,6 +27,7 @@ const router = createBrowserRouter( createRoutesFromElements(
     <Route path="know" element={ <PhrasesCorrect />} />
     <Route path="learn" element={ <PhrasesWrong />} />
     <Route path="all" element={ <PhrasesAll />} />
+    <Route path="account" element={ <Account />} />
   </Route>
 ))
 
