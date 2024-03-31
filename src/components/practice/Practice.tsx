@@ -1,12 +1,10 @@
 import { useRef, useState } from 'react'
-// import { useDispatch, useSelector } from "react-redux"
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 
 import { 
   setPhraseSessionStatus,
   selectCurrentPhrase,
   setOrderForPhrasesInPractice,
-  // updatePhraseCount,
   updateCountForCorrect,
   updateCountForWrong
 } from '../../features/phrases/phrasesSlice'
