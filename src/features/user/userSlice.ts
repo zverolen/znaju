@@ -5,6 +5,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { User } from "../../types/types"
 import { RootState } from "../../app/store"
 
+interface EditActionPayload {
+  userName?: string;
+  email?: string;
+}
+
 
 const initialState: User = {
   userName: 'zverolen',
@@ -19,7 +24,17 @@ const userSlice = createSlice({
   reducers: {
     logIn: (state) => {
       state.userStatus = 'loggedIn'
-    }
+    },
+    // edit: (state, action: PayloadAction<EditActionPayload>) => {
+    //   // Needs a better approach. Intent: to set both fields after the dispatch button is pressed. Maybe two separate 
+    //   // reducers for one event handler.
+    //   const newUserName = action.payload.userName || state.userName
+    //   const newEmail = action.payload.email || state.email
+    //   state = {...state, userName: newUserName, email: newEmail}
+
+    //!!!! three reducers - email, username and status (logged in), actually, only two status values are needed, logged in true/false, edit
+    // is a local thing.
+    // }
   }
 })
 

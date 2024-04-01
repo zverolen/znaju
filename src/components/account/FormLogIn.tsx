@@ -12,22 +12,43 @@ const FormLogIn = () => {
 
   const dispatch = useAppDispatch()
 
-  function handleSubmit(event: React.ChangeEvent<HTMLButtonElement>) {
+  function handleSubmit(event: React.PointerEvent<HTMLButtonElement>) {
     event.preventDefault()
+
+    const isUsernameValid: boolean = userName === 'zverolen' || userName === 'zverolendeveloper@gmail.com'
+    if (!isUsernameValid) {
+      alert('Temp error: Wrong username (should be zverolen or zverolendeveloper@gmail.com')
+      return
+    }
+
+    const isPasswordValid: boolean = password === 'temppassword'
+    if (!isPasswordValid) {
+      alert('Temp error: Wrong password (should be temppassword')
+      return
+    }
+
     dispatch(logIn())
+  }
+
+  function handleUserNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setUserName(event.target.value)
+  }
+
+  function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value)
   }
 
   return (
     <form>
       <div>
         <label htmlFor="username">Почта или имя пользователя</label>
-        <input value={userName} type="text" id="username" required />
+        <input onChange={handleUserNameChange} value={userName} type="text" id="username" required />
       </div>
       <div>
         <label htmlFor="password">Пароль</label>
-        <input value={password} type="password" id="password" required />
+        <input onChange={handlePasswordChange} value={password} type="password" id="password" required />
       </div>
-      <button onClick={isValid && handleSubmit} id="submitLogin" type="submit">Войти</button>
+      <button onClick={handleSubmit} id="submitLogin" type="submit">Войти</button>
       <button id="cancelLogin" type="button">Отменить</button>
     </form>
   )
