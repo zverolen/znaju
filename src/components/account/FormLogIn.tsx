@@ -1,11 +1,14 @@
 import { useState } from "react"
-import { useAppDispatch } from "../../app/hooks"
-import { logIn } from "../../features/user/userSlice"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { logIn, selectUserName, selectEmail, selectPassword } from "../../features/user/userSlice"
 
 const FormLogIn = () => {
   // Live-change the input type to email if emal is being entered?
   // Hard-code login and password or do something similar to force the demo account, fake email
-  // What happens on pressing cancel?
+
+  const savedUserName = useAppSelector(selectUserName)
+  const savedEmail = useAppSelector(selectEmail)
+  const savedPassword = useAppSelector(selectPassword)
 
   const [ userName, setUserName ] = useState<string>('')
   const [ password, setPassword ] = useState<string>('')
@@ -15,13 +18,13 @@ const FormLogIn = () => {
   function handleSubmit(event: React.PointerEvent<HTMLButtonElement>) {
     event.preventDefault()
 
-    const isUsernameValid: boolean = userName === 'zverolen' || userName === 'zverolendeveloper@gmail.com'
+    const isUsernameValid: boolean = userName === savedUserName || userName === savedEmail
     if (!isUsernameValid) {
       alert('Temp error: Wrong username (should be zverolen or zverolendeveloper@gmail.com')
       return
     }
 
-    const isPasswordValid: boolean = password === 'temppassword'
+    const isPasswordValid: boolean = password === savedPassword
     if (!isPasswordValid) {
       alert('Temp error: Wrong password (should be temppassword')
       return
@@ -49,7 +52,6 @@ const FormLogIn = () => {
         <input onChange={handlePasswordChange} value={password} type="password" id="password" required />
       </div>
       <button onClick={handleSubmit} id="submitLogin" type="submit">Войти</button>
-      <button id="cancelLogin" type="button">Отменить</button>
     </form>
   )
 }

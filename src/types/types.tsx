@@ -3,8 +3,6 @@ export type PhraseSessionStatus = 'new' | 'skipped' | 'correct' | 'wrong'
 export type CountSort = 'rare' | 'frequent'
 export type StatusSort = 'correct' | 'wrong' | 'withoutAnswer'
 
-export type UserStatus = 'loggedIn' | 'loggedOut' | 'edit'
-
 //     {
 //       "id": "d81cd6fe-404a-4c90-a46c-8c8f9e83ceee",
 //       "created_at": "2024-03-18T08:43:17.260173+00:00",
@@ -30,6 +28,12 @@ export interface PhraseLocal extends Phrase {
 export interface User {
   userName: string;
   email: string;
-  userStatus: UserStatus;
+  isLoggedIn: boolean;
   password: string;
+}
+
+export interface FormEditFields {
+  userName?: string;
+  email?: string;
+  password?: string;
 }
