@@ -30,6 +30,7 @@ export interface User {
   email: string;
   isLoggedIn: boolean;
   password: string;
+  status: string;
 }
 
 export interface FormEditFields {

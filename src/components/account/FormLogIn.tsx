@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { logIn, selectUserName, selectEmail, selectPassword } from "../../features/user/userSlice"
+import { logIn, selectUserName, selectEmail, selectPassword, tempSignUp } from "../../features/user/userSlice"
 
 const FormLogIn = () => {
   // Live-change the input type to email if emal is being entered?
@@ -31,6 +31,7 @@ const FormLogIn = () => {
     }
 
     dispatch(logIn())
+    dispatch(tempSignUp())
   }
 
   function handleUserNameChange(event: React.ChangeEvent<HTMLInputElement>) {
