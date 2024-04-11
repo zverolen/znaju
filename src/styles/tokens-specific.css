@@ -1,0 +1,9 @@
+:root {
+  --headPadVertMin: var(--gap-II);
+  --headPadVertIdeal: calc((24 * 100 / 1352) * 1vw);
+  --headPadVertMax: var(--gap-III);
+
+  --headLinkMin: var(--gap-I);
+  --headLinkIdeal: calc((16 * 100 / 1352) * 1vw);
+  --headLinkMax: var(--gap-II);
+}

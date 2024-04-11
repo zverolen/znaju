@@ -14,6 +14,12 @@
   --greyMedium: #858585;
   --greyDark: #333333;
 
+  /* Fonts */
+
+  --linkFontMin: calc(18 / 16 * 1rem);
+  --linkFontIdeal: calc((32 * 100 / 1352) * 1vw);
+  --linkFontMax: calc(22 / 16 * 1rem);
+
   /* Sizing */
   --borderWidthPrimary: calc(1 / 16 * 1rem);
   --borderWidthSecondary: calc(2 / 16 * 1rem);
@@ -30,7 +36,7 @@
   --half: 50%;
   --halfReverse: -50%;
   --optimalReadingWidth: 80ch;
-  --minDimentionWCAG-AAA: calc(44 / 16 * 1rem);
+  --WCAG___min-dimention_AAA: calc(44 / 16 * 1rem);
 
   --siteWidthMin: calc(280 / 16 * 1rem);
   --siteWidthMax: calc(1352 / 16 * 1rem);

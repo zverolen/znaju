@@ -1,0 +1,31 @@
+.header {
+  /* First line */
+  grid-row: 1 / 2;
+  /* Full width */
+  grid-column: 1 / -1;
+
+/* Type of layout: two columns as wide at the content, spread to the sides of the container */
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+
+  padding-block: var(--header__padding-block);
+
+  background-color: var(--header__background-color);
+  border-image: conic-gradient(var(--header__background-color) 0 0) fill 0//0 100vw;
+}
+
+.header > div {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: var(--header__links-gap);
+}
+
+@media screen and (min-width: 560px) {
+   header {
+        /* First line */
+        grid-row: 1 / 2;
+        /* Full width */
+        grid-column: 1 / -1;
+    }
+}

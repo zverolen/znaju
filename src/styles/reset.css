@@ -47,6 +47,12 @@ body {
   margin-top: auto;
 } */
 
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
 button:is([role="tab"]) {
   padding: 0;
 }

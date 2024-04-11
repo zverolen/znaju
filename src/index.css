@@ -2,6 +2,7 @@
 
 @import url("./styles/reset.css") layer(reset);
 @import url("./styles/tokens.css") layer(tokens);
+@import url("./styles/tokens-specific.css") layer(tokens);
 @import url("./styles/defaults.css") layer(general);
 
 
@@ -25,17 +26,7 @@
 
 @media (prefers-color-scheme: light) {
   @layer theme.light {
-    /* :root {
-      --text-color: var(--colorPrimary);
-      --background-color: var(--colorPrimaryInverted);
-      --disabled-background-color: var(--colorDisabledLight);
-      --disabled-text-color: var(--colorDisabledMedium);
-
-      --correct-text-color: var(--colorSuccessLightTheme);
-      --correct-background-color: var(--background-color);
-      --wrong-text-color: var(--colorErrorLightTheme);
-      --wrong-background-color: var(--background-color);
-    } */
+    
     :root {
       --text-color: var(--colorPrimaryInverted);
       --background-color: var(--colorPrimary);
@@ -62,6 +53,12 @@
       --correct-background-color: var(--background-color);
       --wrong-text-color: var(--colorErrorDarkTheme);
       --wrong-background-color: var(--background-color);
+
+      /* new styles */
+      --header__background-color: var(--colorSuccessDarkTheme);
+      --header__link_color: var(--text-color);
+      --header__outline_color: var(--header__link_color);
+      --header__border_color: var(--header__outline_color);
     }
   }
 }
@@ -91,75 +88,70 @@
 
     .layout {
       display: grid;
+      /* Sidebar has fixed width and the second column (main) takes the rest space */
       grid-template-columns: calc(280 / 16 * 1rem) 1fr;
-      grid-template-rows: none;
+      /* All secondary areas are as high as the content, the main area takes the rest space */
+      grid-template-rows: min-content min-content auto min-content;
 
       min-height: 100vh;
 
-      > * {
+      > *:not(header) {
         border: 1px solid;
       }
     }
 
-    header {
-      grid-row: 1 / 2;
-      grid-column: 1 / -1;
-    }
-
     aside {
+      /* Second line */
       grid-row: 2 / 3;
+      /* Full width */
       grid-column: 1 / -1;
     }
 
     main {
       grid-row: 3 / 4;
+      /* Full width */
       grid-column: 1 / -1;
     }
 
     footer {
+      /* Last line */
       grid-row: 4 / 5;
+      /* Full width */
       grid-column: 1 / -1;
     }
 
     @media screen and (min-width: 560px) {
 
       .layout {
-        grid-template-rows: auto minmax(80vh, auto) 1fr;
+        /* Header and footer are as high as their content and the main takes the rest space */
+        grid-template-rows: auto minmax(80vh, auto) auto;
       }
 
-      header {
-        grid-row: 1 / 2;
-        grid-column: 1 / -1;
-      }
+     
   
       aside {
+        /* Second line */
         grid-row: 2 / 3;
+        /* First column */
         grid-column: 1 / 2;
       }
   
       main {
+        /* Second line */
         grid-row: 2 / 3;
+        /* Second column */
         grid-column: 2 / 3;
       }
   
       footer {
+        /* Last line */
         grid-row: 3 / 4;
+        /* Full-width */
         grid-column: 1 / -1;
       }
     }
 
-    /* header, main, footer {
-      width: var(--content-width);
-      margin-inline: var(--content-margins);
-      padding-inline: var(--landmark-padding-inline);
-    } */
-
-    /* main {
-      display: var(--main-display);
-      flex-direction: var(--main-direction);
-
-      margin-block-end: var(--main-margin-bottom);
-    } */
+   
 
     ol {
       padding-left: var(--ordered-list-left-gap);
@@ -180,35 +172,16 @@
       word-spacing: var(--text-word-spacing);
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-
-      padding-block: calc(16 / 16 * 1rem);
-    }
+   
 
     h1 {
-      font-size: var(--dev_headingFontSize);
+      font-size: var(--link__font-size);
     }
 
     h2, h3 {
       font-size: var(--dev_subheadingFontSize);
     }
     
-    /* h1, h2, h3 {
-      font-family: var(--heading-font-family);
-    } */
-
-    /* h1 {
-      margin-block-end: var(--title-margin-bottom);
-
-      font-size: var(--title-font-size);
-      text-align: var(--title-text-alignment);
-      line-height: var(--title-line-height);
-      text-transform: var(--heading-text-transform);
-      letter-spacing: var(--heading-letter-spacing);
-    } */
 
     p:is(.card p) {
       font-size: var(--card-text-font-size);
@@ -217,17 +190,6 @@
     p:where(:not(.card p)) {
       line-height: var(--text-line-height);
       font-weight: var(--text-font-weight);
-    }
-
-    h1 + p {
-      width: var(--title-subheading-width);
-      margin-inline: var(--title-subheading-margin);
-    
-      text-align: var(--title-subheading-text-alignment);
-      line-height: var(--subheading-line-height);
-      font-size: var(--title-subheading-text-size);
-      
-      text-wrap: var(--title-subheading-text-wrap);  
     }
 
     /* button.withIcon:is(.disclosure button.withIcon) {
@@ -242,9 +204,17 @@
       letter-spacing: var(--heading-letter-spacing);
     }    
 
-    button {
+    /* button, a {
       min-height: var(--button-min-height);
       min-width: var(--button-min-width);
+    } */
+
+    button {
+      /* Animations */
+      transition: var(--button-transition);
+    }
+
+    button:not(.link) {
       padding-inline: var(--button-padding-inline);
       padding-block: var(--button-padding-block);
 
@@ -257,8 +227,6 @@
       border: var(--borderWidthPrimary) solid var(--text-color);
       color: var(--text-color);
 
-      /* Animations */
-      transition: var(--button-transition);
     }
 
     circle {
@@ -445,6 +413,43 @@
       padding: var(--tabpanel-padding);
 
       border: var(--tabpanel-border) solid var(--text-color);
+    }
+
+    /* Color white, maybe all standalone links will be the same in the end */
+    .link {
+      display: grid;
+      align-content: center;
+
+      height: var(--link__min-height);
+      min-width: var(--link__min-width);
+
+      padding-inline: var(--link__padding-inline);
+    }
+
+    .link:is(header .link) {
+      font-size: var(--link__font-size);
+      font-weight: var(--link__font-weight);
+
+      color: var(--header__link_color);
+      text-decoration: underline;
+    }
+
+    .link:is(header .logo) {
+      text-decoration: none;
+    }
+
+    .link:is(header .active:not(.logo)) span {
+      border-bottom: var(--link__border-width) solid var(--header__border_color);
+    }
+
+    .link:hover, .link:focus-visible {
+      outline: var(--link__outline-width) solid var(--header__outline_color);
+      outline-offset: var(--link__outline-offset);
+    }
+
+    .link:is(header .logo):hover {
+      text-decoration: underline;
+      outline: none;
     }
 
     .cards-container {
@@ -709,10 +714,10 @@
 }
 
 @layer states {
-  :focus-visible {
+  /* :focus-visible {
     outline: var(--outlineOnFocus) solid var(--background-color);
     box-shadow: 0 0 0 var(--shadowOnFocus) var(--text-color);
-  }
+  } */
 
   @media (prefers-reduced-motion: no-preference) {
     :focus-visible {
@@ -726,10 +731,10 @@
    color: var(--background-color);
   } */
 
-  button:focus-visible:not([role="tab"]) {
+  /* button:focus-visible:not([role="tab"]) {
     background-color: var(--text-color);
     color: var(--background-color);
-   }
+   } */
 
   button:focus-visible circle {
     stroke: var(--background-color);
@@ -821,10 +826,10 @@
     box-shadow: 0 0 0 var(--shadowOnFocus) var(--wrong-text-color);
   }
 
-  a:hover, a:focus {
+  /* a:hover, a:focus {
     outline: var(--outlineOnFocus) solid var(--background-color);
     box-shadow: 0 0 0 var(--shadowOnFocus) var(--text-color);
-  }
+  } */
 
   button:not(:disabled):hover {
     cursor: var(--button-cursor);
@@ -838,10 +843,10 @@
     color: var(--background-color);
   } */
 
-  button:hover:where(:not(:disabled)) {
+  /* button:hover:where(:not(:disabled)) {
     background-color: var(--text-color);
     color: var(--background-color);
-  }
+  } */
 
   /* button.withIcon:hover {
     outline: var(--outlineOnFocus) solid var(--background-color);

@@ -8,7 +8,7 @@
   --landmark-padding-inline: var(--gap-I);
 
   --button-min-width: calc(var(--wordLengthMin) + (var(--button-padding-inline) * 2));
-  --button-min-height: var(--minDimentionWCAG-AAA);
+  --button-min-height: var(--WCAG___min-dimention_AAA);
   --button-padding-inline: var(--gap-I);
   --button-padding-block: var(--gap-I);
   --button-padding-horiz: 0;
@@ -16,7 +16,23 @@
   
   --button-with-icon-inline-padding: 0;
 
-  --header-margin-block: var(--gap-IV) min(var(--headerMarginMin), var(--gap-II));
+  /* --header-margin-block: var(--gap-IV) min(var(--headerMarginMin), var(--gap-II)); */
+
+  /* between 24 and 16, depending on the width */
+  --header__padding-block: clamp(var(--headPadVertMin), var(--headPadVertIdeal), var(--headPadVertMax));
+  /* between 16 and 8, depending on the width */
+  --header__links-gap: clamp(var(--headLinkMin), var(--headLinkIdeal), var(--headLinkMax));
+
+  --link__min-height: var(--WCAG___min-dimention_AAA);
+  --link__min-width: var(--WCAG___min-dimention_AAA);
+  /* very specific dimetion, used in one place - no need for stronger abstraction */
+  --link__padding-inline: calc(2 / 16 * 1rem);
+  --link__outline-width: var(--borderWidthSecondary);
+  --link__border-width: var(--link__outline-width);
+  --link__outline-offset: var(--borderWidthSecondary);
+
+  /* between 22 and 18 px, depending on the width*/
+  --link__font-size: clamp(var(--linkFontMin), var(--linkFontIdeal), var(--linkFontMax));
 
   --main-margin-bottom: var(--gap-IV);
 
@@ -67,6 +83,8 @@
   --alert-padding: var(--gap-I);
 
   /* Font */
+
+  --link__font-weight: var(--fontWeightMax);
 
   --text-font-family: var(--sans-I), var(--sans-II), var(--sans-III), var(--sans-IV), sans-serif;
   --heading-font-family: var(--serif-I), var(--serif-II), serif;
