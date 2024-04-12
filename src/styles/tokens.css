@@ -39,8 +39,10 @@
   --WCAG___min-dimention_AAA: calc(44 / 16 * 1rem);
 
   --siteWidthMin: calc(280 / 16 * 1rem);
+  /* --siteWidthMin: calc(264 / 16 * 1rem); */
+  --siteWidthIdeal: calc((1352 * 100 / 1440) * 1vw);
   --siteWidthMax: calc(1352 / 16 * 1rem);
-  --siteWidthIdeal: 94%;
+  
   
   --titleSubheadingWidth: 71%;
 

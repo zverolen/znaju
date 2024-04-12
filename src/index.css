@@ -19,8 +19,10 @@
   }
 
   .site-frame {
-    width: var(--content-width);
+    /* width: var(--content-width); */
+    width: 92%;
     margin-inline: var(--marginCentering);
+    /* padding-inline: var(--content__padding); */
   }
 }
 

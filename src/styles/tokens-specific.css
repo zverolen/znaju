@@ -1,4 +1,10 @@
+/* Starting point for the ideal gap/size - max + 10px */
+
 :root {
+  /* --contentPadMin: var(--gap-I);
+  --contentPadIdeal: calc((34 * 100 / 1352) * 1vw);
+  --contentPadMax: var(--gap-III); */
+  
   --headPadVertMin: var(--gap-II);
   --headPadVertIdeal: calc((24 * 100 / 1352) * 1vw);
   --headPadVertMax: var(--gap-III);

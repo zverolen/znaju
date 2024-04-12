@@ -42,6 +42,8 @@
 
   --content-width: clamp(var(--siteWidthMin), var(--siteWidthIdeal), var(--siteWidthMax));
   --content-margins: var(--marginCentering);
+  --content__padding: var(--gap-I);
+  /* --content__padding: clamp(var(--contentPadMin), var(--contentPadIdeal), var(--contentPadMax)); */
 
   --disclosure-button-margin-bottom: var(--gap-II);
   --disclosure-control-icon-gap: var(--gap-II);
