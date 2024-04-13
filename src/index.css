@@ -19,10 +19,9 @@
   }
 
   .site-frame {
-    /* width: var(--content-width); */
-    width: 92%;
+    width: var(--content-width);
     margin-inline: var(--marginCentering);
-    /* padding-inline: var(--content__padding); */
+    padding-inline: var(--content__padding);
   }
 }
 
@@ -90,8 +89,8 @@
 
     .layout {
       display: grid;
-      /* Sidebar has fixed width and the second column (main) takes the rest space */
-      grid-template-columns: calc(280 / 16 * 1rem) 1fr;
+      /* One column */
+      grid-template-columns: auto;
       /* All secondary areas are as high as the content, the main area takes the rest space */
       grid-template-rows: min-content min-content auto min-content;
 
@@ -125,6 +124,8 @@
     @media screen and (min-width: 560px) {
 
       .layout {
+        /* Sidebar has fixed width and the second column (main) takes the rest space */
+        grid-template-columns: calc(280 / 16 * 1rem) 1fr;
         /* Header and footer are as high as their content and the main takes the rest space */
         grid-template-rows: auto minmax(80vh, auto) auto;
       }
