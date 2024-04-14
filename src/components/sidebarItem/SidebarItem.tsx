@@ -8,7 +8,7 @@ interface StatsItemProps {
   route: string;
 }
 
-const StatsItem = ({ name, statNum, statPercent, id, route }: StatsItemProps) => {
+const SidebarItem = ({ name, statNum, statPercent, id, route }: StatsItemProps) => {
   return (
     <NavLink id={id} to={route} data-testid={id}>
       <span>{name} </span>
@@ -18,4 +18,4 @@ const StatsItem = ({ name, statNum, statPercent, id, route }: StatsItemProps) =>
   )
 }
 
-export default StatsItem
+export default SidebarItem

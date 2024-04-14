@@ -16,9 +16,9 @@
 
   /* Fonts */
 
-  --linkFontMin: calc(18 / 16 * 1rem);
+  /* --linkFontMin: calc(18 / 16 * 1rem);
   --linkFontIdeal: calc((32 * 100 / 1352) * 1vw);
-  --linkFontMax: calc(22 / 16 * 1rem);
+  --linkFontMax: calc(22 / 16 * 1rem); */
 
   /* Sizing */
   --borderWidthPrimary: calc(1 / 16 * 1rem);
@@ -42,7 +42,8 @@
   /* --siteWidthMin: calc(264 / 16 * 1rem); */
   --siteWidthIdeal: calc((1352 * 100 / 1440) * 1vw);
   --siteWidthMax: calc(1352 / 16 * 1rem);
-  
+
+  --breakpoint: calc(560 / 16 * 1rem);
   
   --titleSubheadingWidth: 71%;
 
@@ -100,6 +101,8 @@
   --gap-V: calc(48 / 16 * 1rem);
 
   --headerMarginMin: 5vw;
+
+  
 
   --iconTriangleWidth: calc(14 / 16 * 1rem);
   --iconTriangleHeight: calc(12 / 16 * 1rem);

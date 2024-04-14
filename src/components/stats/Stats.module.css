@@ -1,9 +1,0 @@
-.stats {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-II);
-}
-
-.stats a {
-  display: block;
-}

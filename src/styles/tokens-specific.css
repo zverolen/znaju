@@ -1,6 +1,20 @@
 /* Starting point for the ideal gap/size - max + 10px */
 
+/* PROBLEM: some ideals should be in tokens because they are not referencing, but it would brake the logic */
+
 :root {
+
+  /* Font */
+
+  --sidebarHeadFontMin: var(--textMin);
+  --sidebarHeadFontIdeal: var(--textIdeal);
+  --sidebarHeadFontIdeal: var(--textMax);
+
+  --linkFontMin: var(--textMin);
+  --linkFontIdeal: var(--textIdeal);
+  --linkFontIdeal: var(--textMax);
+
+  /* Size */
   /* --contentPadMin: var(--gap-I);
   --contentPadIdeal: calc((34 * 100 / 1352) * 1vw);
   --contentPadMax: var(--gap-III); */
@@ -10,6 +24,18 @@
   --headPadVertMax: var(--gap-III);
 
   --headLinkMin: var(--gap-I);
-  --headLinkIdeal: calc((16 * 100 / 1352) * 1vw);
+  --headLinkIdeal: calc((26 * 100 / 1352) * 1vw);
   --headLinkMax: var(--gap-II);
+
+  --sidebarGapMin: var(--gap-II);
+  --sidebarGapIdeal: calc((42 * 100 / 1352) * 1vw);
+  --sidebarGapMax: var(--gap-IV);
+
+  --sidebarPadTop: var(--gap-III);
+  --sidebarPadTop_breakpoint: var(--gap-II);
+  --sidebarPadRight: var(--resetNumber);
+  --sidebarPadRight_breakpoint: var(--gap-II);
+  --sidebarPadBottom: var(--gap-III);
+  --sidebarPadBottom_breakpoint: var(--gap-II);
+  --sidebarPadLeft: var(--resetNumber);
 }

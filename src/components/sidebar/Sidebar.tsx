@@ -1,8 +1,8 @@
 import { useAppSelector } from "../../app/hooks"
 
-import StatsItem from "../statsItem/StatsItem"
+import SidebarItem from "../sidebarItem/SidebarItem"
 
-import style from "./Stats.module.css"
+import style from "./Sidebar.module.css"
 
 import { NavLink } from "react-router-dom"
 
@@ -13,7 +13,7 @@ import {
   selectNumberOfWrongPhrases,
 } from '../../features/phrases/phrasesSlice'
 
-export default function Stats() {
+export default function Sidebar() {
   // in research
   const allPhrasesNum: number = useAppSelector(selectTotalNumberOfPhrases)
 
@@ -27,14 +27,13 @@ export default function Stats() {
   const wrongPhrasesPercent: number = wrongPhrasesNum * 100 / allPhrasesNum
 
   return(
-    <div id="stats" className={style.stats}>
+    <div id="stats" className={style.sidebar}>
       <h2>Эта сессия:</h2>
       <nav>
-        <StatsItem route="/remaining" id="remaining" name="Осталось" statNum={newPhrasesNum} statPercent={newPhrasesPercent} />
-        <StatsItem route="/know" id="correct" name="Знаю!" statNum={correctPhrasesNum} statPercent={correctPhrasesPercent} />
-        <StatsItem route="/learn" id="wrong" name="Учу!" statNum={wrongPhrasesNum} statPercent={wrongPhrasesPercent} />
-        <NavLink data-testid="all" to="/all">Вся статистика</NavLink>
-        <NavLink data-testid="account" to="/account">Аккаунт</NavLink>
+        <SidebarItem route="/remaining" id="remaining" name="Осталось" statNum={newPhrasesNum} statPercent={newPhrasesPercent} />
+        <SidebarItem route="/know" id="correct" name="Знаю!" statNum={correctPhrasesNum} statPercent={correctPhrasesPercent} />
+        <SidebarItem route="/learn" id="wrong" name="Учу!" statNum={wrongPhrasesNum} statPercent={wrongPhrasesPercent} />
+        <NavLink className="sidebar-link_separate" data-testid="all" to="/all">Вся статистика</NavLink>
       </nav>
     </div>
   )
