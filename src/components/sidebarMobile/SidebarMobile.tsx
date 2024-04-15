@@ -1,10 +1,7 @@
+import { NavLink } from "react-router-dom"
 import { useAppSelector } from "../../app/hooks"
 
 import SidebarItem from "../sidebarItem/SidebarItem"
-
-import style from "./Sidebar.module.css"
-
-import { NavLink } from "react-router-dom"
 
 import { 
   selectTotalNumberOfPhrases,
@@ -13,7 +10,12 @@ import {
   selectNumberOfWrongPhrases,
 } from '../../features/phrases/phrasesSlice'
 
-export default function Sidebar() {
+import style from "./SidebarMobile.module.css"
+import { copy } from "../../data/copy"
+
+const sidebarCopy = copy.sideBar
+
+export default function SidebarMobile() {
   // in research
   const allPhrasesNum: number = useAppSelector(selectTotalNumberOfPhrases)
 
@@ -27,8 +29,8 @@ export default function Sidebar() {
   const wrongPhrasesPercent: number = wrongPhrasesNum * 100 / allPhrasesNum
 
   return(
-    <div id="stats" className={style.sidebar}>
-      <h2>Эта сессия:</h2>
+    <div id="stats" className={style.sidebarMobile}>
+      <h2>{sidebarCopy.subheading}</h2>
       <nav>
         <SidebarItem route="/remaining" id="remaining" name="Осталось" statNum={newPhrasesNum} statPercent={newPhrasesPercent} />
         <SidebarItem route="/know" id="correct" name="Знаю!" statNum={correctPhrasesNum} statPercent={correctPhrasesPercent} />

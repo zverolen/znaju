@@ -1,7 +1,10 @@
 export const copy = {
   title: {
-    heading: 'Сербский вслух',
+    heading: 'Знаю!',
     subheading: 'Тренируйтесь говорить по-сербски',
+  },
+  sideBar: {
+    subheading: 'Эта сессия'
   },
   phrases:  {
     heading: 'Фразы'

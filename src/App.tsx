@@ -7,7 +7,7 @@ import { fetchPhrases, selectPhrasesStatus } from './features/phrases/phrasesSli
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 
-import Sidebar from './components/sidebar/Sidebar'
+import SidebarDesktop from './components/sidebarDesktop/SidebarDesktop'
 
 function App() {
 
@@ -25,7 +25,7 @@ function App() {
       <Header />
      
       <aside>
-        <Sidebar />
+        <SidebarDesktop />
       </aside>
 
       <main>

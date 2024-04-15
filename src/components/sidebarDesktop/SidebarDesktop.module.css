@@ -1,4 +1,4 @@
-.sidebar {
+.sidebarDesktop {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: min-content min-content;
@@ -11,18 +11,18 @@
   border-right: var(--sidebar__border-width) solid var(--sidebar__border-color);
 }
 
-.sidebar h2 {  
+.sidebarDesktop h2 {  
   font-size: var(--sidebar-heading__font-size);
   font-weight: var(--sidebar-heading__font-weight);
   text-transform: var(--sidebar-heading__text-transform);
 }
 
-.sidebar a:nth-child(4) {
+.sidebarDesktop a:nth-child(4) {
   margin-block-start: var(--sidebar__gap);
 }
 
 @media screen and (min-width: calc(560 / 16 * 1rem)) {
-  .sidebar {
+  .sidebarDesktop {
     padding: var(--sidebar__padding_breakpoint);
   }
 }
