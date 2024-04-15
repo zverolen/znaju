@@ -56,9 +56,13 @@
       --wrong-background-color: var(--background-color);
 
       /* new styles */
+      --link__color: var(--text-color);
+      --link__color_correct: var(--colorSuccessDarkTheme);
+      --link__color_wrong: var(--colorErrorDarkTheme);
+
       --header__background-color: var(--colorSuccessDarkTheme);
-      --header__link_color: var(--text-color);
-      --header__outline_color: var(--header__link_color);
+      /* TO CORRECT! doesn't depend on header */
+      --header__outline_color: var(--link__color);
       --header__border_color: var(--header__outline_color);
     }
   }
@@ -126,8 +130,6 @@
         grid-template-rows: auto minmax(80vh, auto) auto;
       }
 
-     
-  
       aside {
         /* Second line */
         grid-row: 2 / 3;
@@ -174,7 +176,7 @@
    
 
     h1 {
-      font-size: var(--link__font-size);
+      font-size: var(--heading__font-size);
     }
 
     h2, h3 {
@@ -422,14 +424,10 @@
       height: var(--link__min-height);
       min-width: var(--link__min-width);
 
-      padding-inline: var(--link__padding-inline);
-    }
-
-    .link:is(header .link) {
       font-size: var(--link__font-size);
       font-weight: var(--link__font-weight);
 
-      color: var(--header__link_color);
+      color: var(--link__color);
       text-decoration: underline;
     }
 
@@ -437,19 +435,36 @@
       text-decoration: none;
     }
 
-    .link:is(header .active:not(.logo)) span {
-      border-bottom: var(--link__border-width) solid var(--header__border_color);
+    /* overrides for correct link etc. */
+    .link.correct {
+      --link__color: var(--link__color_correct);
     }
 
-    .link:hover, .link:focus-visible {
-      outline: var(--link__outline-width) solid var(--header__outline_color);
+    .link.wrong {
+      --link__color: var(--link__color_wrong);
+    }
+
+    /* default activated */
+     .link:hover, .link:focus-visible {
+      outline: var(--link__outline-width) solid var(--link__color);
       outline-offset: var(--link__outline-offset);
     }
 
+    /* default current page */
+    .link.active span {
+      border-bottom: var(--link__border-width) solid var(--link__color);
+    }
+
+    /* override for logo */
     .link:is(header .logo):hover {
       text-decoration: underline;
       outline: none;
     }
+
+    .link.active:is(header .logo) span {
+      border-bottom: none;
+    }
+    
 
     .cards-container {
       display: var(--card-container-layout);

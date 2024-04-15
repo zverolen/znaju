@@ -33,6 +33,7 @@
 
   /* between 22 and 18 px, depending on the width*/
   --link__font-size: clamp(var(--linkFontMin), var(--linkFontIdeal), var(--linkFontMax));
+  --heading__font-size: var(--link__font-size);
 
   --sidebar__gap: clamp(var(--sidebarGapMin), var(--sidebarGapIdeal), var(--sidebarGapMax));
   --sidebar__padding: var(--sidebarPadTop) var(--sidebarPadRight) var(--sidebarPadBottom) var(--sidebarPadLeft);

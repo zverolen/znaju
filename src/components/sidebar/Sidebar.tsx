@@ -33,7 +33,7 @@ export default function Sidebar() {
         <SidebarItem route="/remaining" id="remaining" name="Осталось" statNum={newPhrasesNum} statPercent={newPhrasesPercent} />
         <SidebarItem route="/know" id="correct" name="Знаю!" statNum={correctPhrasesNum} statPercent={correctPhrasesPercent} />
         <SidebarItem route="/learn" id="wrong" name="Учу!" statNum={wrongPhrasesNum} statPercent={wrongPhrasesPercent} />
-        <NavLink className="sidebar-link_separate" data-testid="all" to="/all">Вся статистика</NavLink>
+        <NavLink className="sidebar-link_separate link" data-testid="all" to="/all">Вся статистика</NavLink>
       </nav>
     </div>
   )

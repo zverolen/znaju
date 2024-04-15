@@ -12,7 +12,7 @@
   text-transform: var(--sidebar-heading__text-transform);
 }
 
-.sidebar .sidebar-link_separate {
+.sidebar a:nth-child(4) {
   margin-block-start: var(--sidebar__gap);
 }
 
