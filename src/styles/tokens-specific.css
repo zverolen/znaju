@@ -23,10 +23,6 @@
   --headPadVertIdeal: calc((24 * 100 / 1352) * 1vw);
   --headPadVertMax: var(--gap-III);
 
-  --headLinkMin: var(--gap-I);
-  --headLinkIdeal: calc((26 * 100 / 1352) * 1vw);
-  --headLinkMax: var(--gap-II);
-
   --sidebarGapMin: var(--gap-II);
   --sidebarGapIdeal: calc((42 * 100 / 1352) * 1vw);
   --sidebarGapMax: var(--gap-IV);

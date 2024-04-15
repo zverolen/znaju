@@ -20,8 +20,6 @@
 
   /* between 24 and 16, depending on the width */
   --header__padding-block: clamp(var(--headPadVertMin), var(--headPadVertIdeal), var(--headPadVertMax));
-  /* between 16 and 8, depending on the width */
-  --header__links-gap: clamp(var(--headLinkMin), var(--headLinkIdeal), var(--headLinkMax));
 
   --link__min-height: var(--WCAG___min-dimention_AAA);
   --link__min-width: var(--WCAG___min-dimention_AAA);

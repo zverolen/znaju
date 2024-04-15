@@ -19,7 +19,6 @@
 .header > div {
   display: grid;
   grid-template-columns: auto auto;
-  /* gap: var(--header__links-gap); */
 }
 
 @media screen and (min-width: 560px) {
