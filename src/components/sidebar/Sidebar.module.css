@@ -1,9 +1,14 @@
 .sidebar {
   display: grid;
   grid-template-columns: auto;
+  grid-template-rows: min-content min-content;
   gap: var(--sidebar__gap);
 
+  height: var(--sidebar_height);
+
   padding: var(--sidebar__padding);
+
+  border-right: var(--sidebar__border-width) solid var(--sidebar__border-color);
 }
 
 .sidebar h2 {  

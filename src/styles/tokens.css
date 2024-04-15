@@ -94,6 +94,8 @@
   --letterSpacingWCAG: 0.012em;
   --wordSpacingWCAG: 0.016em;
 
+  
+  --gap-0: calc(4 / 16 * 1rem);
   --gap-I: calc(8 / 16 * 1rem);
   --gap-II: 1rem;
   --gap-III: calc(24 / 16 * 1rem);

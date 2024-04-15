@@ -33,9 +33,12 @@
   --link__font-size: clamp(var(--linkFontMin), var(--linkFontIdeal), var(--linkFontMax));
   --heading__font-size: var(--link__font-size);
 
+  --sidebar_height: var(--fullHeight);
   --sidebar__gap: clamp(var(--sidebarGapMin), var(--sidebarGapIdeal), var(--sidebarGapMax));
   --sidebar__padding: var(--sidebarPadTop) var(--sidebarPadRight) var(--sidebarPadBottom) var(--sidebarPadLeft);
   --sidebar__padding_breakpoint: var(--sidebarPadTop_breakpoint) var(--sidebarPadRight_breakpoint) var(--sidebarPadBottom_breakpoint) var(--sidebarPadLeft);
+  --sidebar__border-width: var(--borderWidthPrimary);
+  --sidebar-item__gap: var(--gap-0);
 
   --main-margin-bottom: var(--gap-IV);
 

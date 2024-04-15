@@ -61,9 +61,8 @@
       --link__color_wrong: var(--colorErrorDarkTheme);
 
       --header__background-color: var(--colorSuccessDarkTheme);
-      /* TO CORRECT! doesn't depend on header */
-      --header__outline_color: var(--link__color);
-      --header__border_color: var(--header__outline_color);
+
+      --sidebar__border-color: var(--text-color);
     }
   }
 }
