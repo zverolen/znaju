@@ -1,0 +1,12 @@
+.disclosure__control {
+  height: var(--disclosure-control__height);
+  min-width: var(--button__min-height);
+  padding: var(--disclosure-control__padding);
+
+  font-size: var(--disclosure-control__font-size);
+  text-transform: var(--disclosure-control__text-transform);
+  text-decoration: var(--disclosure-control__text-decoration);
+  text-underline-offset: var(--dissclosure-control__underline-offset);
+
+  border: var(--disclosure-control__border);
+}

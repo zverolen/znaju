@@ -2,19 +2,22 @@
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: min-content min-content;
-  gap: var(--sidebar__gap);
 
   height: var(--sidebar_height);
 
   padding: var(--sidebar__padding);
 
-  border-right: var(--sidebar__border-width) solid var(--sidebar__border-color);
+  border-bottom: var(--sidebar__border-width) solid var(--sidebar__border-color);
 }
 
 .sidebarDesktop h2 {  
   font-size: var(--sidebar-heading__font-size);
   font-weight: var(--sidebar-heading__font-weight);
   text-transform: var(--sidebar-heading__text-transform);
+}
+
+.sidebarDesktop nav {
+  margin-block-start: var(--sidebar__gap);
 }
 
 .sidebarDesktop a:nth-child(4) {
@@ -24,5 +27,8 @@
 @media screen and (min-width: calc(560 / 16 * 1rem)) {
   .sidebarDesktop {
     padding: var(--sidebar__padding_breakpoint);
+
+    border-bottom: none;
+    border-right: var(--sidebar__border-width) solid var(--sidebar__border-color);
   }
 }

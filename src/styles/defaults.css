@@ -9,6 +9,7 @@
 
   --button-min-width: calc(var(--wordLengthMin) + (var(--button-padding-inline) * 2));
   --button-min-height: var(--WCAG___min-dimention_AAA);
+  --button__min-height: var(--WCAG___min-dimention_AAA);
   --button-padding-inline: var(--gap-I);
   --button-padding-block: var(--gap-I);
   --button-padding-horiz: 0;
@@ -39,6 +40,8 @@
   --sidebar__padding_breakpoint: var(--sidebarPadTop_breakpoint) var(--sidebarPadRight_breakpoint) var(--sidebarPadBottom_breakpoint) var(--sidebarPadLeft);
   --sidebar__border-width: var(--borderWidthPrimary);
   --sidebar-item__gap: var(--gap-0);
+
+  --disclosure-control__padding: var(--resetNumber);
 
   --main-margin-bottom: var(--gap-IV);
 
@@ -92,7 +95,7 @@
 
   /* Font */
 
-  --link__font-weight: var(--fontWeightMax);
+  
 
   --text-font-family: var(--sans-I), var(--sans-II), var(--sans-III), var(--sans-IV), sans-serif;
   --heading-font-family: var(--serif-I), var(--serif-II), serif;
@@ -144,6 +147,13 @@
   --alert-font-weight: var(--fontWeightMax);
   --alert-text-wrap: pretty;
 
+  --link__font-weight: var(--fontWeightMax);
+
+  --disclosure-control__font-size: var(--text-font-size);
+  --disclosure-control__text-transform: var(--heading-text-transform);
+  --disclosure-control__text-decoration: var(--textDecorationControl);
+  --dissclosure-control__underline-offset: var(--disclosureUnderlineOffset);
+
   /* Icons */
   --disclosure-control-icon-width: var(--iconTriangleWidth);
   --disclosure-control-icon-height: var(--iconTriangleHeight);
@@ -155,11 +165,13 @@
   --tab-icon-line-height: var(--lineHeightEmoji);
 
   /* Borders and outlines */
+
+  --disclosure-control__border: var(--reset);
+
   --tab-bottom-border: var(--reset);
   --tab-border: var(--borderWidthPrimary);
   --current-tab-border-width: var(--borderWidthSecondary);
   --tab-selected-bottom-border: var(--resetNumber);
-  /* --tab-selected-border:  */
   --tabpanel-border: var(--borderWidthSecondary);
   --tab-shadow-on-focus: unset;
   --tab-outline-on-focus: unset;

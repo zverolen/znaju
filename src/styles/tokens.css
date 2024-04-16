@@ -147,6 +147,8 @@
   --serif-II: 'Times New Roman';
 
   --underlinedNoBorder: underline;
+  --textDecorationControl: underline;
+  --disclosureUnderlineOffset: var(--gap-0);
 
   /* Degrees */
   --turnUpSideDown: 180deg;

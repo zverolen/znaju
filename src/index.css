@@ -214,6 +214,8 @@
       transition: var(--button-transition);
     }
 
+    /* Compare with buttons in disclosures */
+
     button:not(.link) {
       padding-inline: var(--button-padding-inline);
       padding-block: var(--button-padding-block);
@@ -226,7 +228,6 @@
       background-color: var(--background-color);
       border: var(--borderWidthPrimary) solid var(--text-color);
       color: var(--text-color);
-
     }
 
     circle {

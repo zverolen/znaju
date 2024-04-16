@@ -13,6 +13,7 @@ import {
 
 import style from "./SidebarDesktop.module.css"
 import { copy } from "../../data/copy"
+import Disclosure from '../disclosure/Disclosure'
 
 type WindowSizeStatus = 'big' | 'small' | null
 
@@ -64,10 +65,24 @@ useLayoutEffect(() => {
                                     <NavLink className="sidebar-link_separate link" data-testid="all" to="/all">Вся статистика</NavLink>
                                   </nav>
                                 </>
+                        
+  const sidebarContentMobile = <Disclosure 
+                                  captionWhenCollapsed={sidebarCopy.subheading} 
+                                  captionWhenExpanded={sidebarCopy.subheading}
+                                  controlClass=''
+                                  >
+                                  <nav>
+                                    <SidebarItem route="/remaining" id="remaining" name="Осталось" statNum={newPhrasesNum} statPercent={newPhrasesPercent} />
+                                    <SidebarItem route="/know" id="correct" name="Знаю!" statNum={correctPhrasesNum} statPercent={correctPhrasesPercent} />
+                                    <SidebarItem route="/learn" id="wrong" name="Учу!" statNum={wrongPhrasesNum} statPercent={wrongPhrasesPercent} />
+                                    <NavLink className="sidebar-link_separate link" data-testid="all" to="/all">Вся статистика</NavLink>
+                                  </nav>
+                              </Disclosure>
 
   return(
     <div id="stats" className={style.sidebarDesktop}>
-      {windowSize === 'big' ? sidebarContentDesktop : 'Mobile'}
+      {/* TODO Case for a boolean */}
+      {windowSize === 'big' ? sidebarContentDesktop : sidebarContentMobile}
     </div>
   )
 }
