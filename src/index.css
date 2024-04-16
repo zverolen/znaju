@@ -63,6 +63,7 @@
       --header__background-color: var(--colorSuccessDarkTheme);
 
       --sidebar__border-color: var(--text-color);
+      --disclosure__color: var(--text-color);
     }
   }
 }
@@ -428,7 +429,7 @@
       font-weight: var(--link__font-weight);
 
       color: var(--link__color);
-      text-decoration: underline;
+      text-decoration: var(--link__underline_default);
     }
 
     .link:is(header .logo) {
@@ -451,8 +452,12 @@
     }
 
     /* default current page */
-    .link.active span {
+    /* .link.active span {
       border-bottom: var(--link__border-width) solid var(--link__color);
+    } */
+    .link.active {
+      text-decoration-style: var(--link__underline_active);
+      text-underline-offset: var(--link__underline-offset);
     }
 
     /* override for logo */

@@ -1,3 +1,7 @@
+
+/// Check list
+// aria-expanded
+// aria-controls, optional
 import style from './DisclosureControl.module.css'
 
 interface DisclosureControlProps {

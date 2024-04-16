@@ -1,6 +1,6 @@
 .disclosure__control {
   height: var(--disclosure-control__height);
-  min-width: var(--button__min-height);
+  min-width: var(--disclosure-control__min-width);
   padding: var(--disclosure-control__padding);
 
   font-size: var(--disclosure-control__font-size);
@@ -9,4 +9,9 @@
   text-underline-offset: var(--dissclosure-control__underline-offset);
 
   border: var(--disclosure-control__border);
+}
+
+.disclosure__control:focus-visible, .disclosure__control:hover {
+  outline: var(--disclosure__outline-width) solid var(--disclosure__color);
+  outline-offset: var(--disclosure__outline-offset);
 }

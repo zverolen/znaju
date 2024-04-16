@@ -29,6 +29,12 @@
   --link__outline-width: var(--borderWidthSecondary);
   --link__border-width: var(--link__outline-width);
   --link__outline-offset: var(--borderWidthSecondary);
+  --link__underline-offset: var(--gap-0);
+
+  --disclosure-control__height: var(--WCAG___min-dimention_AAA);
+  --disclosure-control__min-width: var(--WCAG___min-dimention_AAA);
+  --disclosure__outline-width: var(--link__outline-width);
+  --disclosure__outline-offset: var(--link__outline-offset);
 
   /* between 22 and 18 px, depending on the width*/
   --link__font-size: clamp(var(--linkFontMin), var(--linkFontIdeal), var(--linkFontMax));
@@ -114,6 +120,9 @@
   /* --button-withIcon-text-decoration: var(--underlinedNoBorder); */
   --title-line-height: var(--lineHeightSmallLargeFont);
   --subheading-line-height: var(--lineHeightSmall);
+
+  --link__underline_default: underline;
+  --link__underline_active: double;
 
   --body-font-weight: var(--fontWeightMax);
   --tabpanel-empty-fontweight: var(--fontWeightMin);
