@@ -9,6 +9,10 @@ export const copy = {
   phrases:  {
     heading: 'Фразы'
   },
+  // sidebar: {
+  //   labelWhenCollapsed: 'Показать содержимое раздела',
+  //   labelWhenExpanded: 'Скрыть содержимое раздела'
+  // },
   buttons: {
     revealAnswer: 'Показать ответ',
     hideAnswer: 'Скрыть ответ',
