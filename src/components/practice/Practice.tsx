@@ -9,6 +9,8 @@ import {
   updateCountForWrong
 } from '../../features/phrases/phrasesSlice'
 
+import Instruction from '../instruction/Instruction'
+
 import style from "./Practice.module.css"
 
 type CheckStatus = 'revealed' | 'correct' | 'wrong'
@@ -115,6 +117,7 @@ export default function Practice() {
           {currentPhrase && buttons}
         </div>
       </div>
+      <Instruction />
     </div>
   ) 
 }
