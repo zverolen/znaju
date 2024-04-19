@@ -96,6 +96,17 @@ li {
       position: var(--root-position);
     }
 
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+    
+      font-family: var(--font-family_primary);
+      font-size: var(--font-size_primary);
+      font-weight: var(--font-weight_primary);
+      letter-spacing: var(--text-letter-spacing);
+      word-spacing: var(--text-word-spacing);
+    }
+
     .layout {
       display: grid;
       /* One column */
@@ -186,60 +197,13 @@ li {
       padding-left: var(--ordered-list-left-gap);
     }
 
-    /* header {
-      margin-block: var(--header-margin-block);
-    } */
-
-    body {
-      background-color: var(--background-color);
-      color: var(--text-color);
-    
-      font-family: var(--text-font-family);
-      font-size: var(--dev_textFontSize);
-      /* font-weight: var(--body-font-weight); */
-      letter-spacing: var(--text-letter-spacing);
-      word-spacing: var(--text-word-spacing);
+    h1, h2, h3 {
+      font-size: inherit;
     }
-
-   
-
-    h1 {
-      font-size: var(--heading__font-size);
-    }
-
-    /* h2, h3 {
-      font-size: var(--dev_subheadingFontSize);
-    } */
-    
-
-    p:is(.card p) {
-      font-size: var(--card-text-font-size);
-    }
-
-    p:where(:not(.card p)) {
-      line-height: var(--text-line-height);
-      font-weight: var(--text-font-weight);
-    }
-
-    /* button.withIcon:is(.disclosure button.withIcon) {
-      margin-block-end: var(--disclosure-button-margin-bottom);
-    } */
-
-    h2:is(footer h2) {
-      margin-block: var(--footer-subheading-margin);
-
-      font-size: var(--subheading-font-size);
-      text-transform: var(--heading-text-transform);
-      letter-spacing: var(--heading-letter-spacing);
-    }    
-
-    /* button, a {
-      min-height: var(--button-min-height);
-      min-width: var(--button-min-width);
-    } */
 
     button {
       /* Animations */
+      font-size: inherit;
       transition: var(--button-transition);
     }
 
@@ -249,7 +213,7 @@ li {
       padding-inline: var(--button-padding-inline);
       padding-block: var(--button-padding-block);
 
-      font-size: var(--control-font-size);
+      /* font-size: var(--control-font-size); */
       letter-spacing: var(--button-letter-spacing);
       word-spacing: var(--button-word-spacing);
 
@@ -295,46 +259,6 @@ li {
     button.withIcon span {
       margin-inline-start: var(--disclosure-control-icon-gap);
     }
-
-    /* button.withIcon {
-      padding-inline: var(--button-with-icon-inline-padding);
-      border: var(--button-withIcon-border);
-
-      font-family: var(--button-withIcon-font-family);
-      font-size: var(--button-withIcon-font-size);
-      text-decoration: var(--button-withIcon-text-decoration);
-    } */
-
-    /* button.withIcon span {
-      vertical-align: var(--button-with-icon-vertical-align);
-    } */
-
-    /* button.withIcon[aria-expanded]:is(.disclosure button) span::after {
-      content: '';
-      width: var(--disclosure-control-icon-width);
-      height: var(--disclosure-control-icon-height);
-      margin-left: var(--disclosure-control-icon-gap);
-
-      clip-path: var(--disclosure-control-icon-shape);
-      transform: rotate(var(--disclosure-control-icon-flip));
-
-      vertical-align: var(--button-with-icon-icon-vertical-align);
-
-      background-color: var(--text-color);
-
-      transition: var(--disclosure-button-icon-transition);
-    }
-
-    button.withIcon[aria-expanded="true"]:is(.disclosure button) span::after {
-      transform: var(--disclosure-button-icon-transform);
-    } */
-
-    /* button svg {
-      margin-left: 8px;
-      margin-top: 6px;
-      position: relative;
-      top: 3px;
-    } */
 
     .instruction {
       max-width: var(--instruction-max-width);
@@ -408,43 +332,7 @@ li {
       /* opacity: var(--tab-concealer-initial-opacity); */
     }
 
-    button[role="tab"] > span {
-      display: var(--tab-caption-layout);
-      align-items: var(--tab-caption-centering);
-      padding: var(--tab-caption-padding);
-
-      /* Animations */
-      transition: var(--tab-caption-transition);
-    }
-
-    button[role="tab"] > span > span:nth-child(1) {
-      margin-right: var(--tab-icon-gap);
-      font-size: var(--tab-icon-size);
-      line-height: var(--tab-icon-line-height);
-    }
-
-    @container tablist (width < calc(430 / 16 * 1rem)) {
-      button[role="tab"] > span > span:nth-child(1) {
-        display: var(--hide-emoji);
-      }
-    }
-
-    @container tablist (width < calc(330 / 16 * 1rem)) {
-      button[role="tab"] > span {
-        flex-direction: var(--tab-caption-direction-narrow-screen);
-        align-items: var(--tab-caption-align-items-narrow-screen);
-      }
-    }
-
-    [role="tabpanel"] {
-      flex: var(--tabpanel-flex);
-
-      min-height: var(--tabpanel-min-height);
-      padding: var(--tabpanel-padding);
-
-      border: var(--tabpanel-border) solid var(--text-color);
-    }
-
+   
     /* Color white, maybe all standalone links will be the same in the end */
     .link {
       display: grid;
@@ -452,9 +340,6 @@ li {
 
       height: var(--link__min-height);
       min-width: var(--link__min-width);
-
-      font-size: var(--link__font-size);
-      font-weight: var(--link__font-weight);
 
       color: var(--link__color);
       text-decoration: var(--link__underline_default);
@@ -565,131 +450,6 @@ li {
       animation-iteration-count: var(--updated-card-cover-animation-repeats);
     }
 
-    .card.updated::before {
-      content: 'Без ответа';
-
-      top: var(--updated-card-cover-vertical-shift);
-      transform: var(--updated-card-cover-vertical-shift-correction);
-      z-index: var(--updated-card-cover-layer);
-
-      width: var(--updated-card-cover-width);
-
-      font-size: var(--updated-card-cover-font-size);
-      font-family: var(--updated-card-cover-font-family);
-      text-align: var(--updated-card-cover-text-align); 
-    }
-
-    .card.updated.correct::before {
-      content: 'Знаю!';
-      color: var(--correct-text-color);
-    }
-
-    .card.updated.wrong::before {
-      content: 'Учу!';
-      color: var(--wrong-text-color);
-    }
-
-    .card.updated::after {
-      content: '';
-      
-      inset: var(--updated-card-cover-inset);
-
-      border: var(--updated-card-cover-border-width) solid var(--text-color);
-      background-color: var(--background-color);
-    }
-
-    .card.updated.correct::after {
-      border-color: var(--correct-text-color);
-    }
-
-    .card.updated.wrong::after {
-      border-color: var(--wrong-text-color);
-    }
-  
-    @keyframes updatedCard {
-      0% {
-        opacity: var(--updated-card-cover-starting-opacity);
-      }  
-  
-      50% {
-        opacity: var(--updated-card-cover-middle-opacity);
-      }
-  
-      100% {
-        opacity: var(--updated-card-cover-finishing-opacity);
-      }
-    } 
-
-    /* footer {
-      margin-bottom: var(--footer-margin-bottom);
-
-      border-top: var(--borderWidthPrimary) solid var(--text-color);
-    } */
-
-    footer p {
-      max-width: var(--footer-text-max-width);
-    }
-
-    footer p:not(p:last-child) {
-      margin-block-end: var(--footer-text-margin-bottom);
-    }
-
-    div[role="alert"]:is(:empty) {
-      display: var(--empty-alert-display);
-    }
-
-    div[role="alert"] {
-      position: var(--alert-position);
-      z-index: var(--alert-z-index);
-      bottom: var(--alert-bottom);
-      left: var(--alert-left);
-
-      max-width: var(--alert-max-width);
-      padding: var(--alert-padding);
-
-      border: var(--alert-border-width) solid var(--text-color);
-      background-color: var(--background-color);
-
-      opacity: var(--alert-opacity);
-      animation-duration: var(--alert-animation-duration);
-      animation-name: alert;
-      animation-iteration-count: var(--alert-animation-repeats);
-    }
-
-    div[role="alert"] p {
-      font-size: var(--alert-font-size);
-      line-height: var(--alert-line-height);
-      font-weight: var(--alert-font-weight);
-      text-wrap: var(--alert-text-wrap);
-    }
-
-    div[role="alert"].correct {
-      color: var(--correct-text-color);
-      border-color: var(--correct-text-color);
-    }
-
-    div[role="alert"].wrong {
-      color: var(--wrong-text-color);
-      border-color: var(--wrong-text-color);
-    }
-
-    @keyframes alert {
-      0% {
-        opacity: var(--alert-starting-opacity);
-      } 
-
-      5% {
-        opacity: var(--alert-middle-opacity);
-      } 
-
-      95% {
-        opacity: var(--alert-middle-opacity);
-      }
-  
-      100% {
-        opacity: var(--alert-finishing-opacity);
-      }
-    }
 }
 
 @layer specific {

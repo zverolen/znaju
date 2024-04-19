@@ -10,7 +10,6 @@
 .practice h2 {
   margin-block-end: var(--practice-subheading__margin);
 
-  font-size: var(--practice-subheading__font-size);
   font-family: var(--practice-subheading__font-family);
   text-transform: var(--practice-subheading__text-transform);
   letter-spacing: var(--practice-subheading__letter-spacing);

@@ -4,16 +4,11 @@
   grid-template-rows: min-content min-content;
 
   height: var(--sidebar_height);
-
-  /* padding: var(--sidebar__padding); */
-
-  /* border-bottom: var(--sidebar__border-width) solid var(--sidebar__border-color); */
 }
 
 .sidebarDesktop h2:not(.visually-hidden) {
   margin-block-start: var(--sidebar-heading__margin);
 
-  font-size: var(--sidebar-heading__font-size);
   font-weight: var(--sidebar-heading__font-weight);
   text-transform: var(--sidebar-heading__text-transform);
   letter-spacing: var(--sidebar-heading__letter-spacing);

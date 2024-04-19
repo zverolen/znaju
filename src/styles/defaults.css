@@ -42,8 +42,6 @@
   --practice-phrase__gap: var(--gap-IV);
   --practice-buttons__gap: var(--gap-II);
   /* between 22 and 18 px, depending on the width*/
-  --link__font-size: clamp(var(--linkFontMin), var(--linkFontIdeal), var(--linkFontMax));
-  --heading__font-size: var(--link__font-size);
 
   --sidebar_height: var(--fullHeight);
   --sidebar__gap: clamp(var(--sidebarGapMin), var(--sidebarGapIdeal), var(--sidebarGapMax));
@@ -117,18 +115,14 @@
 
   
 
-  --text-font-family: var(--sans-I), var(--sans-II), var(--sans-III), var(--sans-IV), sans-serif;
-  --heading-font-family: var(--serif-I), var(--serif-II), serif;
-  /* --button-withIcon-font-family: var(--text-font-family); */
+  --font-family_primary: var(--sans-I), var(--sans-II), var(--sans-III), var(--sans-IV), sans-serif;
+  --font-family_subheading: var(--serif-I), var(--serif-II), serif;
 
-  --text-font-size: clamp(var(--textMin), var(--textIdeal), var(--textMax));
-  --control-font-size: var(--controlOnly);
-  --title-font-size: clamp(var(--titleMin), var(--titleIdeal), var(--titleMax));
+  --font-size_primary: clamp(var(--textMin), var(--textIdeal), var(--textMax));
   --title-subheading-text-size: clamp(var(--titleSubheadingMin), var(--titleSubheadingIdeal), var(--titleSubheadingMax));
-  --subheading-font-size: clamp(var(--subheadingMin), var(--subheadingIdeal), var(--subheadingMax));
-  --card-text-font-size: clamp(var(--textCardMin), var(--textCardIdeal), var(--textCardMax));
-
   
+  --font-weight_primary: var(--fontWeightMax);
+  --font-weight_secondary: var(--fontWeightMin);
 
   --text-line-height: var(--lineHeightBig);
   /* --button-withIcon-text-decoration: var(--underlinedNoBorder); */
@@ -151,53 +145,27 @@
   --button-letter-spacing: var(--text-letter-spacing);
   --button-word-spacing: var(--text-word-spacing);
 
-  --subheading__font-size: var(--text-font-size);
   --subheading__text-ransform: uppercase;
   --subheading_thin__font-weight: var(--fontWeightMin);
 
   /* Changes between 22 and 18 px*/
-  /* --sidebar-heading__font-size: clamp(var(--sidebarHeadFontMin, var(--sidebarHeadFontIdeal), var(--sidebarHeadFontMax))); */
-  --sidebar-heading__font-size: var(--subheading__font-size);
-  --sidebar-heading__font-weight: var(--subheading_thin__font-weight);
+  --sidebar-heading__font-weight: var(--font-weight_secondary);
   --sidebar-heading__text-transform: var(--subheading__text-ransform);
   --sidebar-heading__letter-spacing: var(--heading-letter-spacing);
 
-  --practice-subheading__font-size: var(--subheading__font-size);
-  --practice-subheading__font-family: var(--heading-font-family);
+  --practice-subheading__font-family: var(--font-family_subheading);
   --practice-subheading__text-transform: var(--subheading__text-ransform);
   --practice-subheading__letter-spacing: var(--heading-letter-spacing);
-  
-  --title-subheading-text-wrap: pretty;
-
-  --button-with-icon-vertical-align: super;
-  --button-with-icon-icon-vertical-align: middle;
-
-  --updated-card-cover-font-size: var(--title-font-size);
-  --updated-card-cover-font-family: var(--heading-font-family);
-  --updated-card-cover-text-align: center;
-
-  --alert-font-size: var(--control-font-size);
-  --alert-line-height: var(--text-line-height);
-  --alert-font-weight: var(--fontWeightMax);
-  --alert-text-wrap: pretty;
 
   --link__font-weight: var(--fontWeightMax);
 
-  --disclosure-control__font-size: var(--subheading__font-size);
+  --disclosure-control__font-weight: var(--font-weight_secondary);
   --disclosure-control__text-transform: var(--subheading__text-ransform);
   --disclosure-control__text-decoration: var(--textDecorationControl);
   --dissclosure-control__underline-offset: var(--disclosureUnderlineOffset);
   --dissclosure-control__letter-spacing: var(--heading-letter-spacing);
 
   /* Icons */
-  --disclosure-control-icon-width: var(--iconTriangleWidth);
-  --disclosure-control-icon-height: var(--iconTriangleHeight);
-  --disclosure-control-icon-flip: var(--turnUpSideDown);
-  --disclosure-control-icon-unflip: var(--turnReset);
-  --disclosure-control-icon-shape: var(--clipPathTriangle);
-
-  --tab-icon-size: var(--emojiMax);
-  --tab-icon-line-height: var(--lineHeightEmoji);
 
   /* Borders and outlines */
 

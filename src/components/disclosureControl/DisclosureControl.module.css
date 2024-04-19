@@ -3,7 +3,7 @@
   min-width: var(--disclosure-control__min-width);
   padding: var(--disclosure-control__padding);
 
-  font-size: var(--disclosure-control__font-size);
+  font-weight: var(--disclosure-control__font-weight);
   text-transform: var(--disclosure-control__text-transform);
   text-decoration: var(--disclosure-control__text-decoration);
   text-underline-offset: var(--dissclosure-control__underline-offset);
