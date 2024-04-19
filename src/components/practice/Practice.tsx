@@ -106,18 +106,20 @@ export default function Practice() {
 
   return(
     <div id="practice" className={style.practice} >
-      <h2>{phraseProgress === 'correct' || phraseProgress === 'wrong' ? 'Результат' : 'Как сказать по-сербски?'}</h2>
+      <Instruction />
       <div>
+        <h2>{phraseProgress === 'correct' || phraseProgress === 'wrong' ? 'Результат' : 'Как сказать по-сербски?'}</h2>
         <div>
-          <p tabIndex={0} ref={practiceRef}  data-testid="practice-phrase">
-            {currentPhrase ? phraseContent : note}
-          </p>
-        </div>
-        <div>
-          {currentPhrase && buttons}
+          <div>
+            <p tabIndex={0} ref={practiceRef}  data-testid="practice-phrase">
+              {currentPhrase ? phraseContent : note}
+            </p>
+          </div>
+          <div>
+            {currentPhrase && buttons}
+          </div>
         </div>
       </div>
-      <Instruction />
     </div>
   ) 
 }

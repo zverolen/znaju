@@ -56,8 +56,9 @@
   --marginCorrection-I: calc(-1 / 16 * 1rem);
 
   --textMin: calc(18 / 16 * 1rem);
-  --textMax: calc(20 / 16 * 1rem);
-  --textIdeal: 4vw;
+  --textIdeal: calc((32 * 100 / 1352) * 1vw);
+  --textMax: calc(22 / 16 * 1rem);
+  
 
   --textCardMin: calc(18 / 16 * 1rem);
   --textCardMax: calc(22 / 16 * 1rem);
@@ -104,10 +105,15 @@
 
   --headerMarginMin: 5vw;
 
-  
+  --contentPadTopMin: var(--gap-III);
+  --contentPadTopIdeal: calc((42 * 100 / 1352) * 1vw);
+  --contentPadTopMax: var(--gap-IV);
+  --contentPadInline: var(--gap-II);
 
   --iconTriangleWidth: calc(14 / 16 * 1rem);
   --iconTriangleHeight: calc(12 / 16 * 1rem);
+
+  --sidebarHeadMargin: calc(8 / 16 * 1rem);
 
   --instructionLeftPadding: calc(30 / 16 * 1rem);
 

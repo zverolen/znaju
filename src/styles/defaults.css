@@ -42,13 +42,22 @@
 
   --sidebar_height: var(--fullHeight);
   --sidebar__gap: clamp(var(--sidebarGapMin), var(--sidebarGapIdeal), var(--sidebarGapMax));
-  --sidebar__padding: var(--sidebarPadTop) var(--sidebarPadRight) var(--sidebarPadBottom) var(--sidebarPadLeft);
-  --sidebar__padding_breakpoint: var(--sidebarPadTop_breakpoint) var(--sidebarPadRight_breakpoint) var(--sidebarPadBottom_breakpoint) var(--sidebarPadLeft);
-  --sidebar__border-width: var(--borderWidthPrimary);
+  /* --aside__padding: var(--sidebarPadTop) var(--sidebarPadRight) var(--sidebarPadBottom) var(--sidebarPadLeft); */
+  --aside__padding-top: clamp(var(--contentPadTopMin), var(--contentPadTopIdeal), var(--contentPadTopMax));
+  --aside__padding-right: var(--contentPadInline);
+  --aside__padding-right_breakpoint: var(--resetNumber);
+  /* --aside__padding_breakpoint: var(--sidebarPadTop_breakpoint) var(--sidebarPadRight_breakpoint) var(--sidebarPadBottom_breakpoint) var(--sidebarPadLeft); */
+  --aside__border-width: var(--borderWidthPrimary);
+
   --sidebar-item__gap: var(--gap-0);
 
   --disclosure-control__padding: var(--resetNumber);
 
+  --sidebar-heading__margin: var(--sidebarHeadMargin);
+
+  --main__padding-top: clamp(var(--contentPadTopMin), var(--contentPadTopIdeal), var(--contentPadTopMax));
+  --main__padding-left: var(--contentPadInline);
+  --main__padding-left_breakpoint: var(--resetNumber);
   --main-margin-bottom: var(--gap-IV);
 
   --title-margin-bottom: var(--gap-II);
@@ -114,7 +123,7 @@
   --subheading-font-size: clamp(var(--subheadingMin), var(--subheadingIdeal), var(--subheadingMax));
   --card-text-font-size: clamp(var(--textCardMin), var(--textCardIdeal), var(--textCardMax));
 
-  --heading-text-transform: uppercase;
+  
 
   --text-line-height: var(--lineHeightBig);
   /* --button-withIcon-text-decoration: var(--underlinedNoBorder); */
@@ -137,10 +146,15 @@
   --button-letter-spacing: var(--text-letter-spacing);
   --button-word-spacing: var(--text-word-spacing);
 
+  --subheading_thin__font-size: var(--text-font-size);
+  --subheading_thin__text-ransform: uppercase;
+  --subheading_thin__font-weight: var(--fontWeightMin);
+
   /* Changes between 22 and 18 px*/
-  --sidebar-heading__font-size: clamp(var(--sidebarHeadFontMin, var(--sidebarHeadFontIdeal), var(--sidebarHeadFontMax)));
-  --sidebar-heading__font-weight: var(--fontWeightMin);
-  --sidebar-heading__text-transform: var(--heading-text-transform);
+  /* --sidebar-heading__font-size: clamp(var(--sidebarHeadFontMin, var(--sidebarHeadFontIdeal), var(--sidebarHeadFontMax))); */
+  --sidebar-heading__font-size: var(--subheading_thin__font-size);
+  --sidebar-heading__font-weight: var(--subheading_thin__font-weight);
+  --sidebar-heading__text-transform: var(--subheading_thin__text-ransform);
   
   --title-subheading-text-wrap: pretty;
 
@@ -158,8 +172,8 @@
 
   --link__font-weight: var(--fontWeightMax);
 
-  --disclosure-control__font-size: var(--text-font-size);
-  --disclosure-control__text-transform: var(--heading-text-transform);
+  --disclosure-control__font-size: var(--subheading_thin__font-size);
+  --disclosure-control__text-transform: var(--subheading_thin__text-ransform);
   --disclosure-control__text-decoration: var(--textDecorationControl);
   --dissclosure-control__underline-offset: var(--disclosureUnderlineOffset);
 

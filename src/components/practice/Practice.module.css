@@ -1,8 +1,11 @@
 .practice {
-  margin-block: var(--gap-III);
+  display: grid;
+  grid-template-columns: auto;
+
+  margin-bottom: 3rem;
 }
 
 .practice > div > div {
-  display: flex;
-  gap: var(--gap-II);
+  /* display: flex;
+  gap: var(--gap-II); */
 }

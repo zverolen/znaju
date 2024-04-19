@@ -5,16 +5,19 @@
 
   height: var(--sidebar_height);
 
-  padding: var(--sidebar__padding);
+  /* padding: var(--sidebar__padding); */
 
-  border-bottom: var(--sidebar__border-width) solid var(--sidebar__border-color);
+  /* border-bottom: var(--sidebar__border-width) solid var(--sidebar__border-color); */
 }
 
-.sidebarDesktop h2 {  
+.sidebarDesktop h2:not(.visually-hidden) {
+  margin-block-start: var(--sidebar-heading__margin);
+
   font-size: var(--sidebar-heading__font-size);
   font-weight: var(--sidebar-heading__font-weight);
   text-transform: var(--sidebar-heading__text-transform);
 }
+
 
 .sidebarDesktop nav {
   margin-block-start: var(--sidebar__gap);
@@ -26,9 +29,9 @@
 
 @media screen and (min-width: calc(560 / 16 * 1rem)) {
   .sidebarDesktop {
-    padding: var(--sidebar__padding_breakpoint);
+    /* padding: var(--sidebar__padding_breakpoint); */
 
-    border-bottom: none;
-    border-right: var(--sidebar__border-width) solid var(--sidebar__border-color);
+    /* border-bottom: none;
+    border-right: var(--sidebar__border-width) solid var(--sidebar__border-color); */
   }
 }

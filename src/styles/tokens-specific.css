@@ -8,27 +8,26 @@
 
   --sidebarHeadFontMin: var(--textMin);
   --sidebarHeadFontIdeal: var(--textIdeal);
-  --sidebarHeadFontIdeal: var(--textMax);
+  --sidebarHeadFontMax: var(--textMax);
 
   --linkFontMin: var(--textMin);
   --linkFontIdeal: var(--textIdeal);
   --linkFontIdeal: var(--textMax);
 
   /* Size */
-  /* --contentPadMin: var(--gap-I);
-  --contentPadIdeal: calc((34 * 100 / 1352) * 1vw);
-  --contentPadMax: var(--gap-III); */
   
   --headPadVertMin: var(--gap-II);
   --headPadVertIdeal: calc((24 * 100 / 1352) * 1vw);
   --headPadVertMax: var(--gap-III);
 
+  
+
   --sidebarGapMin: var(--gap-II);
   --sidebarGapIdeal: calc((42 * 100 / 1352) * 1vw);
   --sidebarGapMax: var(--gap-IV);
 
-  --sidebarPadTop: var(--gap-III);
-  --sidebarPadTop_breakpoint: var(--gap-II);
+  
+  /* --sidebarPadTop_breakpoint: var(--gap-II); */
   --sidebarPadRight: var(--resetNumber);
   --sidebarPadRight_breakpoint: var(--gap-II);
   --sidebarPadBottom: var(--gap-III);
