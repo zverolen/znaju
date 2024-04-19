@@ -65,7 +65,7 @@ li {
       --link__color_correct: var(--colorSuccessDarkTheme);
       --link__color_wrong: var(--colorErrorDarkTheme);
 
-      --header__background-color: var(--colorSuccessDarkTheme);
+      --header__background-color: var(--colorSuccessLightTheme);
 
       --aside__border-color: var(--text-color);
       --disclosure__color: var(--text-color);

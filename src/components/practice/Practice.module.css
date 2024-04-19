@@ -1,11 +1,29 @@
 .practice {
   display: grid;
   grid-template-columns: auto;
+  gap: var(--practice__gap);
 
+  /* Temp */
   margin-bottom: 3rem;
 }
 
-.practice > div > div {
-  /* display: flex;
-  gap: var(--gap-II); */
+.practice h2 {
+  margin-block-end: var(--practice-subheading__margin);
+
+  font-size: var(--practice-subheading__font-size);
+  font-family: var(--practice-subheading__font-family);
+  text-transform: var(--practice-subheading__text-transform);
+  letter-spacing: var(--practice-subheading__letter-spacing);
+}
+
+.practice__phrase {
+  display: grid;
+  grid-template-columns: auto;
+  gap: var(--practice-phrase__gap);
+}
+
+.practice__phrase div:has(> button) {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  gap: var(--practice-buttons__gap);
 }

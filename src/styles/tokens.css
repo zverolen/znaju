@@ -101,7 +101,8 @@
   --gap-II: 1rem;
   --gap-III: calc(24 / 16 * 1rem);
   --gap-IV: calc(32 /  16 * 1rem);
-  --gap-V: calc(48 / 16 * 1rem);
+  --gap-V: calc(40 /  16 * 1rem);
+  --gap-VI: calc(48 / 16 * 1rem);
 
   --headerMarginMin: 5vw;
 
@@ -116,6 +117,14 @@
   --sidebarHeadMargin: calc(8 / 16 * 1rem);
 
   --instructionLeftPadding: calc(30 / 16 * 1rem);
+
+  --practiceGapMin: var(--gap-IV);
+  --practiceGapIdeal: calc((58 * 100 / 1352) * 1vw);
+  --practiceGapMax: var(--gap-VI);
+  
+  --practiceHeadMarginMin: var(--gap-III);
+  --practiceHeadMarginIdeal: calc((58 * 100 / 1352) * 1vw);
+  --practiceHeadMarginMax: var(--gap-VI);
 
   --tabBlockPadding: var(--gap-I);
   /* --tabBlockPaddingCurrent: calc(12 / 16 * 1rem); */

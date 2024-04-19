@@ -16,8 +16,8 @@
   font-size: var(--sidebar-heading__font-size);
   font-weight: var(--sidebar-heading__font-weight);
   text-transform: var(--sidebar-heading__text-transform);
+  letter-spacing: var(--sidebar-heading__letter-spacing);
 }
-
 
 .sidebarDesktop nav {
   margin-block-start: var(--sidebar__gap);

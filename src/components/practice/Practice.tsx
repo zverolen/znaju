@@ -109,9 +109,9 @@ export default function Practice() {
       <Instruction />
       <div>
         <h2>{phraseProgress === 'correct' || phraseProgress === 'wrong' ? 'Результат' : 'Как сказать по-сербски?'}</h2>
-        <div>
+        <div className={style.practice__phrase}>
           <div>
-            <p tabIndex={0} ref={practiceRef}  data-testid="practice-phrase">
+            <p tabIndex={0} ref={practiceRef} data-testid="practice-phrase">
               {currentPhrase ? phraseContent : note}
             </p>
           </div>
