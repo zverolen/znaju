@@ -48,7 +48,6 @@
   --titleSubheadingWidth: 71%;
 
   --instructionTextGap: 0.5em;
-  /* --instructionTextGap: 0.3em; */
 
   --concealerHeight: calc(5 / 16 * 1rem);
 
@@ -59,24 +58,10 @@
   --textIdeal: calc((32 * 100 / 1352) * 1vw);
   --textMax: calc(22 / 16 * 1rem);
   
-
-  --textCardMin: calc(18 / 16 * 1rem);
-  --textCardMax: calc(22 / 16 * 1rem);
-  --textCardIdeal: 7.2cqw;
-
   --controlOnly: 1rem;
-
-  --titleMin: calc(24 / 16 * 1rem);
-  --titleMax: calc(44 / 16 * 1rem);
-  --titleIdeal: 7vw;
-
-  --titleSubheadingMin: var(--textMin);
-  --titleSubheadingMax: calc(24 / 16 * 1rem);
-  --titleSubheadingIdeal: 5vw;
-
-  --subheadingMin: var(--textMin);
-  --subheadingMax: calc(22 / 16 * 1rem);
-  --subheadingIdeal: var(--textIdeal);
+  --controlTextMin: calc(16 / 16 * 1rem);
+  --controlTextIdeal: calc((28 * 100 / 1352) * 1vw);
+  --controlTextMax: calc(18 / 16 * 1rem);
 
   --emojiMax: calc(24 / 16 * 1rem);
   --widthTwoLetters: 2ch;

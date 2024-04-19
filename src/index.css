@@ -107,6 +107,10 @@ li {
       word-spacing: var(--text-word-spacing);
     }
 
+    p {
+      color: var(--text-color);
+    }
+
     .layout {
       display: grid;
       /* One column */
@@ -202,136 +206,35 @@ li {
     }
 
     button {
+      min-width: var(--button__min-width);
+      min-height: var(--button__min-height);
+
+      letter-spacing: var(--button__letter-spacing);
+      word-spacing: var(--button__word-spacing);
+
+      background-color: var(--background-color);
+      border: var(--borderWidthPrimary) solid var(--text-color);
+      color: var(--text-color);
+
       /* Animations */
       font-size: inherit;
       transition: var(--button-transition);
     }
 
-    /* Compare with buttons in disclosures */
-
-    button:not(.link) {
-      padding-inline: var(--button-padding-inline);
-      padding-block: var(--button-padding-block);
-
-      /* font-size: var(--control-font-size); */
-      letter-spacing: var(--button-letter-spacing);
-      word-spacing: var(--button-word-spacing);
-
-      /* COLORS */
-      background-color: var(--background-color);
-      border: var(--borderWidthPrimary) solid var(--text-color);
-      color: var(--text-color);
+    :is(button, a, p):focus-visible {
+      outline: var(--link__outline-width) solid var(--link__color);
+      outline-offset: var(--link__outline-offset);
     }
 
-    circle {
-      stroke: var(--text-color);
+    :is(button, a):hover {
+      outline: var(--link__outline-width) solid var(--link__color);
+      outline-offset: var(--link__outline-offset);
     }
 
-    footer {
-      > div:nth-of-type(2) {
-        display: flex;
-      }
+    button:hover, button:focus-visible {
+      --text-color: var(--colorPrimary);
+      --background-color: var(--colorPrimaryInverted);
     }
-
-    .plus rect:nth-of-type(1) {
-      fill: var(--wrong-text-color);
-    }
-
-    .plus rect:nth-of-type(2) {
-      fill: var(--text-color);
-    }
-
-    .minus rect {
-      fill: var(--wrong-text-color);
-    }
-
-    button.withIcon {
-      display: var(--disclosure-button-layout);
-      align-items: var(--disclosure-button-horizontal-aling);
-
-      margin-block-end: var(--disclosure-button-margin-bottom);
-    }
-
-    button.withIcon span:not([hidden]) {
-      display: var(--disclosure-button-icon-layout);
-    }
-
-    button.withIcon span {
-      margin-inline-start: var(--disclosure-control-icon-gap);
-    }
-
-    .instruction {
-      max-width: var(--instruction-max-width);
-      margin-block: var(--instruction-margin-block);
-    }
-
-    .instruction li p:not(li:last-child p) {
-      margin-block-end: var(--instruction-item-margin);
-    }
-
-    [role="tablist"] {
-      container: tablist / inline-size;
-
-      display: var(--tablist-layout);
-      align-items: var(--tablist-align-items);
-    }
-
-    button[role="tab"] {
-      position: var(--tab-position);
-      padding-block: var(--tab-padding);
-
-      /* border-bottom: var(--tab-bottom-border); */
-      
-      /* bottom: -1px; */
-      /* bottom: 1px; */
-    }
-
-    button[role="tab"]:not(:first-child) {
-      margin-inline-start: var(--tab-left-margin);
-    }
-
-    button[role="tab"]:not([aria-selected="true"]) {
-      border-width: var(--tab-border);
-
-      /* border-bottom-width: 2px;
-      border-bottom-color: rgba(0,0,0,0); */
-      border-bottom: var(--tab-bottom-border);
-    }
-
-    button[role="tab"][aria-selected="true"] {
-      z-index: var(--tab-current-z-index);
-
-      padding-block-start: var(--tab-padding-current);
-      padding-block-end: var(--tab-selected-padding);
-
-      
-      
-      /* border-bottom-width: 3px;
-      box-shadow: 0px 2px 0 0px var(--background-color);
-      border-bottom-color: transparent !important; */
-      border-width: var(--current-tab-border-width);
-      box-shadow: 0 var(--concealerShadowOffsetY) 0 var(--concealerShadowSpread) var(--background-color);
-      
-      border-bottom-width: var(--tab-selected-bottom-border);
-      /* border-bottom-width: 0; */
-    }
-
-    button[role="tab"][aria-selected="true"]::after {
-      content: '';
-      display: var(--tabpanel-concealer-display);
-
-      position: var(--tab-concealer-position);
-      left: var(--tab-concealer-left);
-      bottom: var(--tab-concealer-bottom);
-      z-index: var(--tab-concealer-z-index);
-
-      width: var(--tab-concealer-width);
-      height: var(--tab-concealer-height);
-      
-      background-color: var(--background-color);
-      /* opacity: var(--tab-concealer-initial-opacity); */
-    }
-
    
     /* Color white, maybe all standalone links will be the same in the end */
     .link {
@@ -359,10 +262,10 @@ li {
     }
 
     /* default activated */
-     .link:hover, .link:focus-visible {
+     /* .link:hover, .link:focus-visible {
       outline: var(--link__outline-width) solid var(--link__color);
       outline-offset: var(--link__outline-offset);
-    }
+    } */
 
     /* default current page */
     /* .link.active span {
@@ -382,74 +285,6 @@ li {
     .link.active:is(header .logo) span {
       border-bottom: none;
     }
-    
-
-    .cards-container {
-      display: var(--card-container-layout);
-      grid-template-columns: var(--cards-container-template);
-      gap: var(--cards-container-gap);
-      grid-auto-rows: var(--cards-container-auto-rows);
-      align-items: var(--cards-container-align-items);
-    }
-
-    .cards-container > p {
-      grid-column: var(--tabpanel-empty-grid-column);
-    }
-
-    .card {
-      container: card/inline-size;
-
-      position: var(--card-position);
-
-      display: var(--card-layout);
-      gap: var(--card-gap);
-
-      /* Make cards same height */
-      height: var(--card-height);
-      padding: var(--card-padding);
-
-      flex-direction: var(--card-flex-direction);
-
-      border: var(--borderWidthPrimary) solid var(--text-color);
-    }
-
-    .card > div:first-child {
-      
-      display: var(--card-phrase-layout);
-      gap: var(--card-phrase-gap);
-
-      /* Make cards same size */
-      flex: var(--card-phrase-flex);
-      flex-direction: var(--card-phrase-flex-direction);
-      justify-content: var(--card-phrase-justify-content);
-    }
-
-    .card > div:last-child {
-      display: var(--card-check-layout);
-      gap: var(--card-check-gap);
-    }
-
-    .card.updated {
-      border: var(--updated-card-border);
-    }
-
-    .card.updated div {
-      opacity: var(--updated-card-content-opacity);
-    }
-
-    .card.updated::before, .card.updated::after {
-      position: var(--updated-card-cover-position);
-
-      pointer-events: var(--updated-card-cover-pointer-events);
-
-      opacity: var(--updated-card-cover-opacity);
-
-      /* Animations */
-      animation-duration: var(--updated-card-cover-animation-duration);
-      animation-name: updatedCard;
-      animation-iteration-count: var(--updated-card-cover-animation-repeats);
-    }
-
 }
 
 @layer specific {

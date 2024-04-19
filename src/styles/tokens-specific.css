@@ -20,17 +20,17 @@
   --headPadVertIdeal: calc((24 * 100 / 1352) * 1vw);
   --headPadVertMax: var(--gap-III);
 
-  
-
   --sidebarGapMin: var(--gap-II);
   --sidebarGapIdeal: calc((42 * 100 / 1352) * 1vw);
   --sidebarGapMax: var(--gap-IV);
-
   
-  /* --sidebarPadTop_breakpoint: var(--gap-II); */
   --sidebarPadRight: var(--resetNumber);
   --sidebarPadRight_breakpoint: var(--gap-II);
   --sidebarPadBottom: var(--gap-III);
   --sidebarPadBottom_breakpoint: var(--gap-II);
   --sidebarPadLeft: var(--resetNumber);
+
+  --buttonPadInline: var(--gap-I);
+  --buttonMinHeight: var(--WCAG___min-dimention_AAA);
+  --buttonMinWidth: var(--WCAG___min-dimention_AAA);
 }

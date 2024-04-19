@@ -23,6 +23,34 @@
 
 .practice__phrase div:has(> button) {
   display: grid;
-  grid-template-columns: min-content min-content;
+  grid-template-columns: max-content max-content;
   gap: var(--practice-buttons__gap);
+}
+
+.practice__phrase_subheading {
+  display: block;
+
+  margin-block-end: var(--practice-phrase-heading__margin);
+
+  font-family: var(--practice-subheading__font-family);
+  text-transform: var(--practice-subheading__text-transform);
+  letter-spacing: var(--practice-subheading__letter-spacing);
+}
+
+.practice__phrase button {
+  padding-inline: var(--practice-buttons__padding-inline);
+
+  font-size: var(--practice-buttons__font-size);
+}
+
+.correct {
+  --text-color: var(--correct-text-color);
+}
+
+.wrong {
+  --text-color: var(--wrong-text-color);
+}
+
+.correct :focus-visible {
+  background-color: var(--correct-text-color);
 }

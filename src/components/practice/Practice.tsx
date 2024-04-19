@@ -37,6 +37,7 @@ export default function Practice() {
 
   let phraseContent
   let buttons
+  let statusClassname
   const note = <span>Фразы закончились! Начните сессию снова или поработайте с отдельными фразами.</span>
 
   if (currentPhrase) {
@@ -58,19 +59,21 @@ export default function Practice() {
   
     } else if (phraseProgress === 'correct') {
   
-      phraseContent = <><span>Знаю: </span><span lang='sr-RS'>{currentPhrase.serbian} </span><span>{`(${currentPhrase.russian})`}</span></>
+      phraseContent = <><span className={style.practice__phrase_subheading}>Знаю: </span><span lang='sr-RS'>{currentPhrase.serbian} </span><span>{`(${currentPhrase.russian})`}</span></>
       buttons = <div>
                   <button onClick={() => handlePhraseChange('correct')}>Закончить</button>
-                  <button onClick={() => handlePhraseChange('new')}>Повторить</button>
+                  <button onClick={() => handlePhraseChange('new')}>Ещё раз</button>
                 </div>
+      statusClassname = style.correct
   
     } else if (phraseProgress === 'wrong') {
   
-      phraseContent = <><span>Учу: </span><span lang='sr-RS'>{currentPhrase.serbian} </span><span>{`(${currentPhrase.russian})`}</span></>
+      phraseContent = <><span className={style.practice__phrase_subheading}>Учу: </span><span lang='sr-RS'>{currentPhrase.serbian} </span><span>{`(${currentPhrase.russian})`}</span></>
       buttons = <div>
                   <button onClick={() => handlePhraseChange('wrong')}>Закончить</button>
-                  <button onClick={() => handlePhraseChange('new')}>Попробовать снова</button>
+                  <button onClick={() => handlePhraseChange('new')}>Ещё раз</button>
                 </div>
+      statusClassname = style.wrong
   
     }
   } 
@@ -86,10 +89,6 @@ export default function Practice() {
 
     dispatch(setOrderForPhrasesInPractice({id: currentPhrase.id, phraseSessionStatus: practiceStatus}))
     dispatch(setPhraseSessionStatus({id: currentPhrase.id, phraseSessionStatus: practiceStatus}))
-
-    // if (practiceStatus === 'correct' || practiceStatus === 'wrong') {
-    //   dispatch(updatePhraseCount({id: currentPhrase.id, practiceStatus: practiceStatus}))
-    // }
 
     if (practiceStatus === 'correct') {
       dispatch(updateCountForCorrect(currentPhrase.id))
@@ -109,7 +108,7 @@ export default function Practice() {
       <Instruction />
       <div>
         <h2>{phraseProgress === 'correct' || phraseProgress === 'wrong' ? 'Результат' : 'Как сказать по-сербски?'}</h2>
-        <div className={style.practice__phrase}>
+        <div className={`${style.practice__phrase} ${statusClassname}`}>
           <div>
             <p tabIndex={0} ref={practiceRef} data-testid="practice-phrase">
               {currentPhrase ? phraseContent : note}
