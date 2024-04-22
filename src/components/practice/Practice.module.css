@@ -51,6 +51,28 @@
   --text-color: var(--wrong-text-color);
 }
 
-.correct :focus-visible {
-  background-color: var(--correct-text-color);
+.correct:focus-visible {
+  --outline-color: var(--correct-text-color);
+  --background-color: var(--correct-text-color);
+}
+
+.wrong:focus-visible {
+  --outline-color: var(--wrong-text-color);
+  --background-color: var(--wrong-text-color);
+}
+
+.correct:focus-visible:is(button), .wrong:focus-visible:is(button) {
+  --text-color: var(--colorPrimary);
+}
+
+.correct:hover:is(button) {
+  --text-color: var(--colorPrimary);
+  --outline-color: var(--correct-text-color);
+  --background-color: var(--correct-text-color);
+}
+
+.wrong:hover:is(button) {
+  --text-color: var(--colorPrimary);
+  --outline-color: var(--wrong-text-color);
+  --background-color: var(--wrong-text-color);
 }

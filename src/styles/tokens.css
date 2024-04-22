@@ -30,6 +30,7 @@
   --innerShadowOnFocus: calc(5 / 16 * 1rem);
   --concealerShadowOffsetY: calc(5 / 16 * 1rem);
   --concealerShadowSpread: calc(-2 / 16 * 1rem);
+  --outlineOffset: calc(4 / 18 * 1rem);
 
   --fullWidth: 100%;
   --fullHeight: 100%;

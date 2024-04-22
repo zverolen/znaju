@@ -64,6 +64,7 @@ li {
       --link__color: var(--text-color);
       --link__color_correct: var(--colorSuccessDarkTheme);
       --link__color_wrong: var(--colorErrorDarkTheme);
+      --outline-color: var(--text-color);
 
       --header__background-color: var(--colorSuccessLightTheme);
 
@@ -222,13 +223,13 @@ li {
     }
 
     :is(button, a, p):focus-visible {
-      outline: var(--link__outline-width) solid var(--link__color);
-      outline-offset: var(--link__outline-offset);
+      outline: var(--link__outline-width) solid var(--outline-color);
+      outline-offset: var(--outline__offset);
     }
 
     :is(button, a):hover {
-      outline: var(--link__outline-width) solid var(--link__color);
-      outline-offset: var(--link__outline-offset);
+      outline: var(--link__outline-width) solid var(--outline-color);
+      outline-offset: var(--outline__offset);
     }
 
     button:hover, button:focus-visible {
@@ -289,7 +290,7 @@ li {
 
 @layer specific {
   /* New approach, experiment */
-  button.correct {
+  /* button.correct {
     --accent-color: var(--correct-text-color);
   }
 
@@ -325,7 +326,7 @@ li {
     animation-duration: var(--updated-tab-animation-duration);
     animation-name: updatedTab;
     animation-iteration-count: var(--updated-tab-repeats);
-  }
+  } */
 
   @keyframes updatedTab {
     0% {
@@ -378,7 +379,7 @@ li {
     color: var(--background-color);
    } */
 
-  button:focus-visible circle {
+  /* button:focus-visible circle {
     stroke: var(--background-color);
   }
 
@@ -396,7 +397,7 @@ li {
     background-color: var(--wrong-text-color);
     color: var(--wrong-background-color);
     box-shadow: 0 0 0 var(--shadowOnFocus) var(--wrong-text-color);
-  }
+  } */
 
    /* button[role="tab"]:is(:focus, :focus-visible) {
     box-shadow: var(--tab-shadow-on-focus);
@@ -424,118 +425,7 @@ li {
     box-shadow: 0 0 0 var(--tab-inner-shadow) var(--wrong-text-color);
   } */
 
-  button[role="tab"]:is(:focus-visible) {
-    /* box-shadow: var(--tab-shadow-on-focus); */
-    box-shadow: 0px 5px 0 -2px var(--background-color);
-    outline: var(--tab-outline-on-focus);
-  }
-
-  button[role="tab"].correct:focus-visible {
-    color: var(--correct-text-color);
-  }
-
-  button[role="tab"].wrong:focus-visible {
-    color: var(--wrong-text-color);
-  }
-
-  button[role="tab"]:focus-visible > span {
-    outline: var(--tab-inner-outline) solid var(--background-color);
-    box-shadow: 0 0 0 var(--tab-inner-shadow) var(--text-color);
-  }
-
-  button[role="tab"].correct:focus-visible > span {
-    box-shadow: 0 0 0 var(--tab-inner-shadow) var(--correct-text-color);
-  }
-
-  button[role="tab"].wrong:focus-visible > span {
-    box-shadow: 0 0 0 var(--tab-inner-shadow) var(--wrong-text-color);
-  }
-
-  [role="tabpanel"]:focus-visible {
-    background-color: var(--background-color);
-  }
-
-  .card:not(.updated):focus-within {
-    outline: var(--outlineOnFocus) solid var(--background-color);
-    box-shadow: 0 0 0 var(--shadowOnFocus) var(--text-color);
-  }
-
-  .card.correct:not(.updated):focus-within {
-    box-shadow: 0 0 0 var(--shadowOnFocus) var(--correct-text-color);
-  }
-
-  .card.wrong:not(.updated):focus-within {
-    box-shadow: 0 0 0 var(--shadowOnFocus) var(--wrong-text-color);
-  }
-
-  /* a:hover, a:focus {
-    outline: var(--outlineOnFocus) solid var(--background-color);
-    box-shadow: 0 0 0 var(--shadowOnFocus) var(--text-color);
-  } */
-
-  button:not(:disabled):hover {
-    cursor: var(--button-cursor);
-
-    /* Animations */
-    transition: var(--button-transition-on-hover);
-  }
-
-  /* button:hover:where(:not(.withIcon):not(:disabled)) {
-    background-color: var(--text-color);
-    color: var(--background-color);
-  } */
-
-  /* button:hover:where(:not(:disabled)) {
-    background-color: var(--text-color);
-    color: var(--background-color);
-  } */
-
-  /* button.withIcon:hover {
-    outline: var(--outlineOnFocus) solid var(--background-color);
-    box-shadow: 0 0 0 var(--shadowOnFocus) var(--text-color);
-  } */
-
-  button:hover circle {
-    stroke: var(--background-color);
-  }
-
-  button:hover .plus rect:nth-of-type(2) {
-    fill: var(--background-color);
-  }
-
-  button.correct:not([role="tab"]):not(:disabled):hover {
-    background-color: var(--correct-text-color);
-  }
-
-  button.wrong:not([role="tab"]):not(:disabled):hover {
-    background-color: var(--wrong-text-color);
-  }
-
-  button[role="tab"]:hover {
-    background-color: var(--background-color);
-  }
-
-  button[role="tab"]:hover > span {
-    /* background-color: var(--text-color); */
-    /* color: var(--background-color); */
-    color: var(--text-color);
-    outline: var(--tab-inner-outline) solid var(--background-color);
-    box-shadow: 0 0 0 var(--tab-inner-shadow) var(--text-color);
-  }
-
-  button[role="tab"].correct:hover > span {
-    /* background-color: var(--correct-text-color); */
-    color: var(--correct-text-color);
-    /* color: var(--correct-background-color); */
-    box-shadow: 0 0 0 var(--tab-inner-shadow) var(--correct-text-color);
-  }
-
-  button[role="tab"].wrong:hover > span {
-    /* background-color: var(--wrong-text-color); */
-    /* color: var(--wrong-background-color); */
-    color: var(--wrong-text-color);
-    box-shadow: 0 0 0 var(--tab-inner-shadow) var(--wrong-text-color);
-  }
+ 
   
   :disabled {
     background-color: var(--disabled-background-color);

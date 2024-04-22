@@ -53,16 +53,16 @@ export default function Practice() {
   
       phraseContent = <span lang='sr-RS'>{currentPhrase.serbian}</span>
       buttons = <div>
-                  <button onClick={() => handlePhraseCheck('correct')}>Знаю!</button>
-                  <button onClick={() => handlePhraseCheck('wrong')}>Учу!</button>
+                  <button className={style.correct} onClick={() => handlePhraseCheck('correct')}>Знаю!</button>
+                  <button className={style.wrong} onClick={() => handlePhraseCheck('wrong')}>Учу!</button>
                 </div>
   
     } else if (phraseProgress === 'correct') {
   
       phraseContent = <><span className={style.practice__phrase_subheading}>Знаю: </span><span lang='sr-RS'>{currentPhrase.serbian} </span><span>{`(${currentPhrase.russian})`}</span></>
       buttons = <div>
-                  <button onClick={() => handlePhraseChange('correct')}>Закончить</button>
-                  <button onClick={() => handlePhraseChange('new')}>Ещё раз</button>
+                  <button className={style.correct} onClick={() => handlePhraseChange('correct')}>Закончить</button>
+                  <button className={style.correct} onClick={() => handlePhraseChange('new')}>Ещё раз</button>
                 </div>
       statusClassname = style.correct
   
@@ -70,8 +70,8 @@ export default function Practice() {
   
       phraseContent = <><span className={style.practice__phrase_subheading}>Учу: </span><span lang='sr-RS'>{currentPhrase.serbian} </span><span>{`(${currentPhrase.russian})`}</span></>
       buttons = <div>
-                  <button onClick={() => handlePhraseChange('wrong')}>Закончить</button>
-                  <button onClick={() => handlePhraseChange('new')}>Ещё раз</button>
+                  <button className={style.wrong} onClick={() => handlePhraseChange('wrong')}>Закончить</button>
+                  <button className={style.wrong} onClick={() => handlePhraseChange('new')}>Ещё раз</button>
                 </div>
       statusClassname = style.wrong
   
@@ -108,9 +108,9 @@ export default function Practice() {
       <Instruction />
       <div>
         <h2>{phraseProgress === 'correct' || phraseProgress === 'wrong' ? 'Результат' : 'Как сказать по-сербски?'}</h2>
-        <div className={`${style.practice__phrase} ${statusClassname}`}>
+        <div className={`${style.practice__phrase}`}>
           <div>
-            <p tabIndex={0} ref={practiceRef} data-testid="practice-phrase">
+            <p className={statusClassname} tabIndex={0} ref={practiceRef} data-testid="practice-phrase">
               {currentPhrase ? phraseContent : note}
             </p>
           </div>

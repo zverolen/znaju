@@ -32,6 +32,7 @@
   --link__outline-width: var(--borderWidthSecondary);
   --link__border-width: var(--link__outline-width);
   --link__outline-offset: var(--borderWidthSecondary);
+  --outline__offset: var(--outlineOffset);
   --link__underline-offset: var(--gap-0);
 
   --disclosure-control__height: var(--WCAG___min-dimention_AAA);
