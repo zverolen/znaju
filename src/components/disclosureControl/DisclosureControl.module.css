@@ -13,6 +13,8 @@
 }
 
 .disclosure__control:focus-visible, .disclosure__control:hover {
-  outline: var(--disclosure__outline-width) solid var(--disclosure__color);
-  outline-offset: var(--disclosure__outline-offset);
+  --background-color: var(--colorPrimary);
+  --text-color: var(--colorPrimaryInverted);
+  /* outline: var(--disclosure__outline-width) solid var(--disclosure__color);
+  outline-offset: var(--disclosure__outline-offset); */
 }

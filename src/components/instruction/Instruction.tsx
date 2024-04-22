@@ -13,7 +13,7 @@ const Instruction = () => {
                 captionWhenExpanded={instructionCopy.heading}
                 controlClass=""
                 >
-        <ol role="list">
+        <ol className={style.instruction} role="list">
           <li>{instructionCopy[1]}</li>
           <li>{instructionCopy[2]}</li>
           <li>{instructionCopy[3]}</li>

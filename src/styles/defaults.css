@@ -39,8 +39,10 @@
   --disclosure-control__min-width: var(--WCAG___min-dimention_AAA);
   --disclosure__outline-width: var(--link__outline-width);
   --disclosure__outline-offset: var(--link__outline-offset);
+  --instruction__gap: var(--gap-I);
 
-  --practice__gap: clamp(var(--practiceGapMin), var(--practiceGapIdeal), var(--practiceGapMax));
+  /* --practice__gap: clamp(var(--practiceGapMin), var(--practiceGapIdeal), var(--practiceGapMax)); */
+  --practice__gap: var(--gap-III);
    
   --practice-subheading__margin: clamp(var(--practiceHeadMarginMin), var(--practiceHeadMarginIdeal), var(--practiceHeadMarginMax));
   --practice-phrase__gap: var(--gap-IV);
@@ -86,6 +88,8 @@
   --instruction-margin-block: var(--gap-I) var(--gap-IV);
   --instruction-item-margin: var(--instructionTextGap);
   --instruction-max-width: var(--optimalReadingWidth);
+  --instruction__margin: var(--gap-II);
+  --instruction__line-height: var(--lineHeightBig);
 
   --tab-padding: var(--tabBlockPadding);
   --tab-padding-current: var(--tabBlockPaddingCurrent);
@@ -170,6 +174,7 @@
   --disclosure-control__text-decoration: var(--textDecorationControl);
   --dissclosure-control__underline-offset: var(--disclosureUnderlineOffset);
   --dissclosure-control__letter-spacing: var(--heading-letter-spacing);
+  --instruction__font-weight: var(--font-weight_secondary);
 
   /* Icons */
 

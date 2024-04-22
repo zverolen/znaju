@@ -1,4 +1,10 @@
 .instruction {
-  /* display: grid;
-  grid-template-columns: auto; */
+  display: grid;
+  grid-template-columns: auto;
+  gap: var(--instruction__gap);
+
+  margin-block-start: var(--instruction__margin);
+
+  font-weight: var(--instruction__font-weight);
+  line-height: var(--instruction__line-height);
 }
